@@ -34,9 +34,7 @@ class ThreeArray {
     void fillArray_x() {
         for(int i = 0; i < x.length; i++) {
             x[i] = minRand + new Random().nextDouble() * (maxRand - minRand);
-            System.out.print(x[i] + " ");
         }
-        System.out.println();
     }
 
     void calculate_ans() {
@@ -46,7 +44,7 @@ class ThreeArray {
                     ans[i][j] = Math.pow(Math.PI * (Math.tan(x[i]) * 0.5 + 2), 3);
                 }
                 else if(a[i] > 2 && a[i] < 20 && a[i] % 2 != 0) {
-                    ans[i][j] = Math.cbrt(Math.sin(Math.pow(Math.PI * (x[i] - 0.25),3)));
+                    ans[i][j] = Math.cbrt(Math.sin(Math.pow(Math.PI * (x[i] - 0.25), 3)));
                 }
                 else {
                     ans[i][j] = Math.pow(Math.tan(Math.pow(2 * Math.pow(x[i], x[i]/(x[i] - Math.PI)), 3)), Math.PI/(1 - Math.tan(Math.atan(Math.pow(Math.E, -Math.abs(x[i]))))));
