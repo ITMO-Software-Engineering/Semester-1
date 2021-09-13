@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Lab1 {
     public static void main(String[] str) {
-        ThreeArray threeArray = new ThreeArray(11, 19, -4.0d, 11.0d);
+        ThreeArray threeArray = new ThreeArray(9, 17, -14.0d, 6.0d);
         threeArray.fillArray_a();
         threeArray.fillArray_x();
         threeArray.calculate_ans();
@@ -27,7 +27,7 @@ class ThreeArray {
 
     void fillArray_a() {
         for(int i = 0; i < a.length; i++) {
-            a[i] = i * 2 + 1;
+            a[i] =4 + i * 2 + 1;
         }
     }
 
@@ -40,14 +40,14 @@ class ThreeArray {
     void calculate_ans() {
         for(int i = 0; i < ans.length; i++) {
             for(int j = 0; j < ans[i].length; j++) {
-                if(a[i] == 17) {
-                    ans[i][j] = Math.pow(Math.PI * (Math.tan(x[i]) * 0.5 + 2), 3);
+                if(a[i] == 13) {
+                    ans[i][j] = Math.tan(Math.cos(Math.sin(x[j])));
                 }
-                else if(a[i] > 2 && a[i] < 20 && a[i] % 2 != 0) {
-                    ans[i][j] = Math.cbrt(Math.sin(Math.pow(Math.PI * (x[i] - 0.25), 3)));
+                else if(a[i] == 5 || a[i] == 9 || a[i] == 15 || a[i] == 17) {
+                    ans[i][j] = Math.pow(Math.sin(Math.pow(Math.E, x[j]) / 2d), Math.pow((2d / 3) / Math.pow(Math.E, x[j]), 2));
                 }
                 else {
-                    ans[i][j] = Math.pow(Math.tan(Math.pow(2 * Math.pow(x[i], x[i]/(x[i] - Math.PI)), 3)), Math.PI/(1 - Math.tan(Math.atan(Math.pow(Math.E, -Math.abs(x[i]))))));
+                    ans[i][j] = Math.pow(Math.asin(Math.sin(Math.cos(Math.cos(x[j])))) - 1, 3);
                 }
 
             }
@@ -57,7 +57,7 @@ class ThreeArray {
     void print_ans() {
         for (double[] line : ans) {
             for (double answer : line) {
-                System.out.printf("%.3f ", answer);
+                System.out.printf("%.2f ", answer);
             }
             System.out.println();
         }
