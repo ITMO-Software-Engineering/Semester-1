@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Lab1 {
+public class Main {
     public static void main(String[] str) {
         ThreeArray threeArray = new ThreeArray(9, 17, -14.0d, 6.0d);
         threeArray.fillArray_a();
@@ -57,7 +57,11 @@ class ThreeArray {
     void print_ans() {
         for (double[] line : ans) {
             for (double answer : line) {
-                System.out.printf("%.2f ", answer);
+                if(answer < 0) {
+                    System.out.printf("%.2f ", answer);
+                } else {
+                    System.out.printf("+%.2f ", answer);
+                }
             }
             System.out.println();
         }
