@@ -1,7 +1,7 @@
 package Main;
 
 import MyPokemon.*;
-import ru.ifmo.se.pokemon.Battle;
+import ru.ifmo.se.pokemon.*;
 
 public class Fight {
     public static void main(String[] args) {
