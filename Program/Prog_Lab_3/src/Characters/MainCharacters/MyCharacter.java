@@ -1,22 +1,32 @@
 package Characters.MainCharacters;
 
 import Characters.*;
+import Environment.Places.Place;
 
 public class MyCharacter extends Subject implements Think, Say, Move {
     protected Mood[] mood;
     protected String name;
+    protected Place place;
 
     public MyCharacter() {
-        this.name = "Unknown";
-        this.mood = new Mood[]{Mood.UNKNOWN};
+        setName("Unknown");
+        setMood(new Mood[]{Mood.UNKNOWN});
     }
 
     public MyCharacter(String name) {
-        this.name = name;
-        this.mood = new Mood[]{Mood.UNKNOWN};
+        setName(name);
+        setMood(new Mood[]{Mood.UNKNOWN});
     }
     public MyCharacter(String name, Mood[] mood) {
+        setName(name);
+        setMood(mood);
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setMood(Mood[] mood) {
         this.mood = mood;
     }
 

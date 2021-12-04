@@ -4,7 +4,7 @@ public class Weather {
     Status[] status;
 
     public Weather() {
-        this.status = new Status[]{Status.Unknown};
+        this.status = new Status[]{Status.UNKNOWN};
     }
 
     public Weather(Status[] status) {
@@ -12,11 +12,11 @@ public class Weather {
     }
 
     public enum Status {
-        Sunny,
-        Warm,
-        Cold,
-        Foggy,
-        Unknown,
+        SUNNY,
+        WARM,
+        COLD,
+        FOGGY,
+        UNKNOWN;
     }
 
     public void changeStatus(Status[] newStatus) {
@@ -24,9 +24,6 @@ public class Weather {
     }
 
     public void getStatus() {
-        System.out.print("The weather is ");
-        for (Status s:this.status) {
-            System.out.print(s);
-        }
+
     }
 }
