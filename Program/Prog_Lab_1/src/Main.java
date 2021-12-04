@@ -1,3 +1,4 @@
+//Variant: 21324
 import java.util.Random;
 
 public class Main {

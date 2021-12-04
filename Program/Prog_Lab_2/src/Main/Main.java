@@ -1,3 +1,4 @@
+//Variant: 21326
 package Main;
 
 import ru.ifmo.se.pokemon.*;
