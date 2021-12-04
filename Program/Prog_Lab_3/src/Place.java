@@ -1,2 +1,2 @@
-public class Place {
+public abstract class Place {
 }

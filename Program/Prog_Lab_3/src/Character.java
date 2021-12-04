@@ -1,2 +1,2 @@
-public class Character {
+public class Character  {
 }
