@@ -5,7 +5,8 @@
       <change afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work1.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work2.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/Basic work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/Basic work.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/Basic work.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_lab_4/Lab4.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_lab_4/output file.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_lab_4/source file.json" beforeDir="false" />
@@ -64,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639085919286</updated>
-      <workItem from="1639085920525" duration="404000" />
+      <workItem from="1639085920525" duration="603000" />
     </task>
     <servers />
   </component>
