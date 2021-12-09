@@ -17,7 +17,7 @@ lines.append('')
 lines.append('')
 lineCounter += 3
 
-print("lineCounter=", lineCounter)
+# print("lineCounter=", lineCounter)
 f_out.write("{\n")
 level = 0
 
@@ -53,14 +53,14 @@ for i in range(0, lineCounter - 1):
             f_out.write(']\n')
             middleBrackets[level] -= 1
 
-    print("level=", level, "lastLevel=", lastLevel, "thisLevel=", thisLevel)
+    # print("level=", level, "lastLevel=", lastLevel, "thisLevel=", thisLevel)
     if ':' in lines[i]:
         keyword = lines[i].strip().split(':', maxsplit=1)
-        print("|keyword0="+keyword[0]+"|keyword1="+keyword[1])
+        # print("|keyword0="+keyword[0]+"|keyword1="+keyword[1])
         if keyword[1].strip() == "":
             write_space(level)
             f_out.write('"' + keyword[0].strip() + '": [\n')
-            print("'['at level", level)
+            # print("'['at level", level)
             middleBrackets[level] += 1
         elif lines[i+1].strip() == '-':
             write_space(level)
@@ -76,7 +76,7 @@ for i in range(0, lineCounter - 1):
     if lines[i].strip() == '-':
         write_space(level)
         f_out.write('{\n')
-        print("'{'at level", level)
+        # print("'{'at level", level)
         bigBrackets[level] += 1
 f_out.write('}\n')
 
