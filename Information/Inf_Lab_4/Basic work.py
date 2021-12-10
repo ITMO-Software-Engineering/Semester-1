@@ -1,11 +1,11 @@
-f_in = open('source file.yml', 'r', encoding='utf-8')
+f_in = open('source file.yml', 'r', encoding='utf-8')  # 本仓库提供了三份额外的 YAML 输入文件可供测试，此处文件名加上对应阿拉伯数字即可
 f_out = open('output file.json', 'w', encoding='utf-8')
 
 bigBrackets = [0]*100  # 指针表示缩进层级，存放当前层级下未配对的大括号数量，每当输出一个'{'时+1，输出一个'}\n'时-1，所有缩进层级下的最后应归零
 middleBrackets = [0]*100  # 同上一行，存放当前缩进层级下未配对的中括号数量
 lines = list()  # 记录每一行的信息，存进列表
-keyword = list()  # 存放关键字
-lineCounter = 1  # 记录文件行数
+keyword = list()  # 存放关键字的列表
+lineCounter = 1  # 记录文件行数，从一开始
 
 newLine = f_in.readline()  # 预读第一行文件内容
 while newLine:  # 循环读取每一行文件，并统计文件行数
@@ -19,7 +19,7 @@ lineCounter += 3  # 同时加上补充的空行
 
 # print("lineCounter=", lineCounter)
 f_out.write("{\n")  # 每一个 JSON 文件开头必带的'{'符号
-print("'{' at level 0")  # 测试输出1
+print("'{' at level 0")  # 测试输出
 
 level = 1  # 记录输出文件中当前行的缩进层级，由于 JSON 文件的特性，默认从一级缩进开始
 
@@ -53,7 +53,7 @@ for i in range(0, lineCounter - 1):  # 循环枚举记录的每一行文本
             else:
                 f_out.write('},\n')  # 否则输出带有逗号的右大括号并换行
                 bigBrackets[level] -= 1  # 当前缩进层级下未匹配的大括号数量 -1
-                print("'}' at level", level)  #
+                print("'}' at level", level)  # 测试输出
 
     print("level=", level, "lastLevel=", lastLevel, "thisLevel=", thisLevel)  # 测试输出
     print(lines[i])  # 测试输出
@@ -100,11 +100,19 @@ for i in range(0, lineCounter - 1):  # 循环枚举记录的每一行文本
                 print("'{'at level", level)  # 测试输出
                 bigBrackets[level] += 1  # 当前缩进层级下未匹配的中括号数量 +1
         elif lines[i+1].strip() == '-':  # 若当前不包含复合结构，且下一行只有一个 '-'，则说明该元素为当前缩进下的最后一个元素，末尾不需要写入逗号分割
-            write_space(level)  # 根据当前缩进层级写入空格
-            f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')
+            if keyword[1].strip() == '~':  # 如果 '-' 右侧关键字为 '~'，则该值对应 JSON 为 null
+                write_space(level)  # 根据当前缩进层级写入空格
+                f_out.write('"' + keyword[0].strip() + '": null\n')  # 转换成 JSON 样式后写入，将 '~' 转换为 mull
+            else:
+                write_space(level)  # 根据当前缩进层级写入空格
+                f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')  # 转换成 JSON 样式后写入
         elif (lines[i+1] == '\n') or (lines[i+1] == ''):  # 若当前不包含复合结构，且下一行为空'，则说明该元素为当前结构，乃至整份文档的下的最后一个元素，末尾不需要写入逗号分割
-            write_space(level)  # 根据当前缩进层级写入空格
-            f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')  # 转换成 JSON 样式后写入，并加上逗号分隔
+            if keyword[1].strip() == '~':  # 如果 '-' 右侧关键字为 '~'，则该值对应 JSON 为 null
+                write_space(level)  # 根据当前缩进层级写入空格
+                f_out.write('"' + keyword[0].strip() + '": null\n')  # 转换成 JSON 样式后写入，将 '~' 转换为 mull
+            else:
+                write_space(level)  # 根据当前缩进层级写入空格
+                f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')  # 转换成 JSON 样式后写入
             if bigBrackets[level-1] > 0:  # 如果当前缩进下存在为配对的大括号
                 write_space(level-1)  # 则根据预估的下一行缩进层级写入空格
                 f_out.write('}\n')  # 写入右大括号并换行

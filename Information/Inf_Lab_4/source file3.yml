@@ -1,21 +1,10 @@
-boolean: 
-  - TRUE
-  - FALSE
-float:
-  - 3.14
-  - 6.8523015e+5
-int:
-  - 123
-  - 0b1010_0111_0100_1010_1110
-null:
-  nodeName: 'node'
-  parent: ~
-string:
-  - 哈哈
-  - 'Hello world'
-  - newline
-    newline2
-date:
-  - 2018-02-17
-datetime: 
-  - 2018-02-17T15:02:31+08:00
+languages:
+  - Ruby
+  - Perl
+  - Python
+websites:
+  YAML: yaml.org 
+  Ruby: ruby-lang.org 
+  Python: python.org 
+  Perl: use.perl.org
+  myBlog: ~
