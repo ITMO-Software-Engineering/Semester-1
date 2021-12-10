@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e41db39b-4b43-426c-9f25-2123fa3828db" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work2.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/Basic work.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/Basic work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/Extra work1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inf_Lab_4/Extra work2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Inf_Lab_4/Extra work2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_lab_4/Lab4.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_lab_4/output file.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inf_lab_4/source file.json" beforeDir="false" />
@@ -31,6 +34,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
