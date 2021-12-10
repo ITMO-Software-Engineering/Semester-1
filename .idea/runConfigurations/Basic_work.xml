@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Basic work (1)" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <configuration default="false" name="Basic work" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
     <module name="Prog_Lab_3" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
-    <option name="SDK_HOME" value="C:\Users\23987\AppData\Local\Microsoft\WindowsApps\python3.9.exe" />
+    <option name="SDK_HOME" value="C:\Users\Гостевой\AppData\Local\Microsoft\WindowsApps\python.exe" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Information/Inf_Lab_4" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
