@@ -60,21 +60,36 @@ for i in range(0, lineCounter - 1):  # 循环枚举记录的每一行文本
 
     if middleBrackets[level] != 0:  # 如果当前缩进层级存在未匹配的中括号
         write_space(level)  # 根据当前缩进层级写入空格
-        f_out.write(']\n')  # 写入右大括号并换行
-        middleBrackets[level] -= 1  # 当前缩进层级下未匹配的中括号数量 -1
-        print("']' at level", level)  # 测试输出
+        if lines[i+1].strip() == '':
+            f_out.write(']\n')  # 写入右大括号并换行
+            middleBrackets[level] -= 1  # 当前缩进层级下未匹配的中括号数量 -1
+            print("']' at level", level)  # 测试输出
+        else:
+            f_out.write('],\n')  # 写入右大括号并换行
+            middleBrackets[level] -= 1  # 当前缩进层级下未匹配的中括号数量 -1
+            print("']' at level", level)  # 测试输出
 
-    if lines[i].strip() == '-':  # 如果当前行为'-'
-        write_space(level)   # 根据当前缩进层级写入空格
-        f_out.write('{\n')   # 写入左大括号并换行
-        print("'{'at level", level)  # 测试输出
-        bigBrackets[level] += 1  # 当前缩进层级下未匹配的大括号数量 +1
+    if '-' in lines[i]:  # 如果当前行存在'-'
+        keyword = lines[i].strip().split('-', maxsplit=1)  # 根据该符号分割出关键字，并只进行一次分割，误判值中的 '-' 符号
+        print("|keyword0=" + keyword[0] + "|keyword1=" + keyword[1])  # 测试输出
+        if keyword[0].strip() == '' and keyword[1].strip() == '':
+            write_space(level)   # 根据当前缩进层级写入空格
+            f_out.write('{\n')   # 写入左大括号并换行
+            print("'{'at level", level)  # 测试输出
+            bigBrackets[level] += 1  # 当前缩进层级下未匹配的大括号数量 +1
+        elif keyword[0].strip() == '' and keyword[1].strip() != '':
+            if (lines[i+1] == '') or ('-' not in lines[i+1]):
+                write_space(level)  # 根据当前缩进层级写入空格
+                f_out.write('"' + keyword[1].strip() + '"\n')
+            else:
+                write_space(level)  # 根据当前缩进层级写入空格
+                f_out.write('"' + keyword[1].strip() + '",\n')
 
     if ':' in lines[i]:  # 如果当前行中存在 ':' 符号
         keyword = lines[i].strip().split(':', maxsplit=1)  # 根据该符号分割出关键字，并只进行一次分割，误判值中的 '-' 符号
         print("|keyword0="+keyword[0]+"|keyword1="+keyword[1])  # 测试输出
         if keyword[1].strip() == "":
-            if lines[i+1].strip() == '-':  #
+            if '-' in lines[i+1]:  #
                 write_space(level)  # 根据当前缩进层级写入空格
                 f_out.write('"' + keyword[0].strip() + '": [\n')
                 print("'['at level", level)  # 测试输出
