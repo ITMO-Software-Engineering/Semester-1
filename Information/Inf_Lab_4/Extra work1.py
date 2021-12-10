@@ -1,10 +1,9 @@
 import yaml
 import json
 
-f_in = open('source file.yml', 'r', encoding='utf-8')
-f_out = open('output file.json', 'w')
+with open('source file.yml', 'r', encoding='utf-8') as f_in:
+    content = yaml.load(f_in, Loader=yaml.SafeLoader)
 
-content = yaml.load(stream=f_in, Loader=yaml.SafeLoader)
-print(content)
-
-f_out.write(json.dumps(content))
+with open('output file.json', 'w', encoding='utf-8') as f_out:
+    content = json.dumps(content, ensure_ascii=False)
+    f_out.write(content)
