@@ -1,4 +1,4 @@
-f_in = open('source file3.yml', 'r', encoding='utf-8')
+f_in = open('source file.yml', 'r', encoding='utf-8')
 f_out = open('output file.json', 'w', encoding='utf-8')
 
 bigBrackets = [0]*100  # 指针表示缩进层级，存放当前层级下未配对的大括号数量，每当输出一个'{'时+1，输出一个'}\n'时-1，所有缩进层级下的最后应归零
@@ -69,50 +69,50 @@ for i in range(0, lineCounter - 1):  # 循环枚举记录的每一行文本
             middleBrackets[level] -= 1  # 当前缩进层级下未匹配的中括号数量 -1
             print("']' at level", level)  # 测试输出
 
-    if '-' in lines[i]:  # 如果当前行存在'-'
-        keyword = lines[i].strip().split('-', maxsplit=1)  # 根据该符号分割出关键字，并只进行一次分割，误判值中的 '-' 符号
+    if '-' in lines[i] and lines[i].strip()[0] == '-':  # 如果当前行存在'-' 并且位于行首，那么意味着这可能是个数组，或包含数组的复合结构
+        keyword = lines[i].strip().split('-', maxsplit=1)  # 根据该符号分割出关键字，并只进行一次分割，防止误判值中的 '-' 符号
         print("|keyword0=" + keyword[0] + "|keyword1=" + keyword[1])  # 测试输出
-        if keyword[0].strip() == '' and keyword[1].strip() == '':
+        if keyword[0].strip() == '' and keyword[1].strip() == '':  # 如果该行只有一个 '-' 符号，则说明这是一个多维数组，需要加深缩进
             write_space(level)   # 根据当前缩进层级写入空格
             f_out.write('{\n')   # 写入左大括号并换行
             print("'{'at level", level)  # 测试输出
             bigBrackets[level] += 1  # 当前缩进层级下未匹配的大括号数量 +1
-        elif keyword[0].strip() == '' and keyword[1].strip() != '':
-            if (lines[i+1] == '') or ('-' not in lines[i+1]):
+        elif keyword[0].strip() == '' and keyword[1].strip() != '':  # 如果 '-' 左侧为空，右侧不为空，则说明这是一个一维数组
+            if (lines[i+1] == '') or ('-' not in lines[i+1]):  # 如果下一行为空，或下一行不包含数组结构，则说明该元素为当前数组的最后一个元素，不需要加上逗号分隔
                 write_space(level)  # 根据当前缩进层级写入空格
-                f_out.write('"' + keyword[1].strip() + '"\n')
-            else:
+                f_out.write('"' + keyword[1].strip() + '"\n')  # 转换成 JSON 样式后写入
+            else:  # 否则说明该元素为当前数组的最后一个元素，需要加上逗号分隔
                 write_space(level)  # 根据当前缩进层级写入空格
-                f_out.write('"' + keyword[1].strip() + '",\n')
+                f_out.write('"' + keyword[1].strip() + '",\n')  # 转换成 JSON 样式后写入，并加上逗号分隔
 
-    if ':' in lines[i]:  # 如果当前行中存在 ':' 符号
+    if ':' in lines[i] and lines[i].strip()[0] != '-':  # 如果当前行中存在 ':' 符号，并且该行不以 '-'开头，那么意味着这大概是个对象
         keyword = lines[i].strip().split(':', maxsplit=1)  # 根据该符号分割出关键字，并只进行一次分割，误判值中的 '-' 符号
         print("|keyword0="+keyword[0]+"|keyword1="+keyword[1])  # 测试输出
-        if keyword[1].strip() == "":
-            if '-' in lines[i+1]:  #
+        if keyword[1].strip() == "":  # 如果当前行的第二个关键字为空，则该对象可能包含复合结构
+            if '-' in lines[i+1] and lines[i+1].strip()[0] == '-':  # 如果下一行包含 '-' 并且以 '-'为开头，则说明该对象嵌套了一个数组
                 write_space(level)  # 根据当前缩进层级写入空格
-                f_out.write('"' + keyword[0].strip() + '": [\n')
+                f_out.write('"' + keyword[0].strip() + '": [\n')  # 转换成 JSON 样式后写入，并加上逗号分隔
                 print("'['at level", level)  # 测试输出
                 middleBrackets[level] += 1  # 当前缩进层级下未匹配的中括号数量 +1
-            else:
+            else:  # 否则该对象下就再次嵌套了一个对象
                 write_space(level)  # 根据当前缩进层级写入空格
-                f_out.write('"' + keyword[0].strip() + '": {\n')
+                f_out.write('"' + keyword[0].strip() + '": {\n')  # 转换成 JSON 样式后写入，并加上逗号分隔
                 print("'{'at level", level)  # 测试输出
                 bigBrackets[level] += 1  # 当前缩进层级下未匹配的中括号数量 +1
-        elif lines[i+1].strip() == '-':
+        elif lines[i+1].strip() == '-':  # 若当前不包含复合结构，且下一行只有一个 '-'，则说明该元素为当前缩进下的最后一个元素，末尾不需要写入逗号分割
             write_space(level)  # 根据当前缩进层级写入空格
             f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')
-        elif (lines[i+1] == '\n') or (lines[i+1] == ''):
+        elif (lines[i+1] == '\n') or (lines[i+1] == ''):  # 若当前不包含复合结构，且下一行为空'，则说明该元素为当前结构，乃至整份文档的下的最后一个元素，末尾不需要写入逗号分割
             write_space(level)  # 根据当前缩进层级写入空格
-            f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')
-            if bigBrackets[level-1] > 0:
-                write_space(level-1)  # 根据预估的下一行缩进层级写入空格
+            f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '"\n')  # 转换成 JSON 样式后写入，并加上逗号分隔
+            if bigBrackets[level-1] > 0:  # 如果当前缩进下存在为配对的大括号
+                write_space(level-1)  # 则根据预估的下一行缩进层级写入空格
                 f_out.write('}\n')  # 写入右大括号并换行
                 bigBrackets[level-1] -= 1  # 当前预估的下一行缩进层级下未匹配的大括号数量 -1
                 print("'}' at level", level-1)  # 测试输出
-        else:
+        else:  # 否则说明当前元素非最后一个元素，写入时需要加上逗号分隔
             write_space(level)  # 根据当前缩进层级写入空格
-            f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '",\n')
+            f_out.write('"' + keyword[0].strip() + '": "' + keyword[1].strip() + '",\n')  # 转换成 JSON 样式后写入，并加上逗号分隔
 
 f_out.write('}\n')
 print("'}' at level 0")
