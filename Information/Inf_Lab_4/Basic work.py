@@ -1,4 +1,4 @@
-import time
+from time import *
 
 
 def write_space(file, level_num):  # 根据当前的缩进层级输出空格，空格数量=缩进层级*2
@@ -133,8 +133,8 @@ def yaml_to_json(infile, outfile):
     return
 
 
-start_time = time.monotonic()
-yaml_to_json("source file.yml", "output file.json")
-end_time = time.monotonic()
+start_time = time()
+yaml_to_json("source file.yml", "output file1.json")
+end_time = time()
 
 print("\n---finish in %s---" % (end_time-start_time))

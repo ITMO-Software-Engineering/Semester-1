@@ -1,10 +1,17 @@
 import yaml
 import json
-import time
+from time import *
 
-with open('source file.yml', 'r', encoding='utf-8') as f_in:
-    content = yaml.load(f_in, Loader=yaml.SafeLoader)
 
-with open('output file.json', 'w', encoding='utf-8') as f_out:
-    content = json.dumps(content, ensure_ascii=False)
-    f_out.write(content)
+def yaml_to_json(infile, outfile):
+    with open(infile, 'r', encoding='utf-8') as f_in:
+        content = yaml.safe_load(f_in)
+
+    with open(outfile, 'w', encoding='utf-8') as f_out:
+        json.dump(content, f_out, indent=2, ensure_ascii=False)
+
+
+start_time = time()
+yaml_to_json("source file.yml", "output file2.json")
+end_time = time()
+print("\n---finish in %s---" % (end_time-start_time))
