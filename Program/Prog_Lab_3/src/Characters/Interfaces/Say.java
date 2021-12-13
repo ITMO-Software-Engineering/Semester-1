@@ -1,4 +1,4 @@
-package Characters.MainCharacters;
+package Characters.Interfaces;
 
 public interface Say {
     Void say(String words);

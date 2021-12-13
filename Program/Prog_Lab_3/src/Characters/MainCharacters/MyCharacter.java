@@ -3,10 +3,16 @@ package Characters.MainCharacters;
 import Characters.*;
 import Environment.Places.Place;
 
-public class MyCharacter extends Subject implements Think, Say, Move {
+public class MyCharacter extends Subject {
     protected Mood[] mood;
     protected String name;
     protected Place place;
+    public enum Mood {
+        UNKNOWN,
+        NORMAL,
+        AFRAID,
+        SAD;
+    }
 
     public MyCharacter() {
         setName("Unknown");
@@ -30,22 +36,8 @@ public class MyCharacter extends Subject implements Think, Say, Move {
         this.mood = mood;
     }
 
-    @Override
-    public Void move() {
-        return null;
-    }
-
     public void changeMood(Mood[] newMood) {
         this.mood = newMood;
     }
 
-    @Override
-    public Void say(String words) {
-        return null;
-    }
-
-    @Override
-    public Void think(String about) {
-        return null;
-    }
 }
