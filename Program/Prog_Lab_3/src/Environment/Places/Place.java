@@ -1,12 +1,31 @@
 package Environment.Places;
 
-import Characters.MainCharacters.MyCharacter;
+import Characters.MainCharacters.MainCharacter;
+import Characters.Subject;
 
-public abstract class Place {
-    String name;
-    String[] visitors;
+public class Place {
+    String placeName;
+    Subject[] member = new Subject[5];
+    int numMember = 0;
 
-    public void arriveCharacter(MyCharacter character) {
+    public Place() {
+        this.placeName = "unknown place";
+    }
 
+    public Place(String placeName) {
+        this.placeName = placeName;
+    }
+
+    public void arriveCharacter(MainCharacter character) {
+        member[numMember] = character;
+        numMember++;
+    }
+
+    public String getPlaceName() {
+        return this.placeName;
+    }
+
+    public Subject[] getMember() {
+        return member;
     }
 }

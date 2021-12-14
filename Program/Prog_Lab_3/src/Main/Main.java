@@ -1,14 +1,14 @@
 package Main;//Variant: 52190
 
-import Characters.MainCharacters.MyCharacter;
+import Characters.MainCharacters.MainCharacter;
 import Environment.*;
 
 public class Main {
     public static void main(String[] args) {
         Day day = new Day(1);
-        Weather weather = new Weather(new Weather.Status[]{Weather.Status.SUNNY, Weather.Status.WARM});
-        MyCharacter firstCharacter = new MyCharacter("Pool", new MyCharacter.Mood[]{MyCharacter.Mood.UNKNOWN});
-        MyCharacter secondCharacter = new MyCharacter("Piglet");
-        MyCharacter thirdCharacter = new MyCharacter("Rabbit");
+        Weather weather = new Weather(Weather.Status.WARM_AND_SUNNY);
+        MainCharacter firstCharacter = new MainCharacter("Pool", new MainCharacter.Mood[]{MainCharacter.Mood.UNKNOWN});
+        MainCharacter secondCharacter = new MainCharacter("Piglet");
+        MainCharacter thirdCharacter = new MainCharacter("Rabbit");
     }
 }

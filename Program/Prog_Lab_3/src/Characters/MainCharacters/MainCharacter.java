@@ -3,29 +3,31 @@ package Characters.MainCharacters;
 import Characters.*;
 import Environment.Places.Place;
 
-public class MyCharacter extends Subject {
+public class MainCharacter extends Subject {
     protected Mood[] mood;
-    protected String name;
-    protected Place place;
+
     public enum Mood {
         UNKNOWN,
         NORMAL,
         AFRAID,
-        SAD;
+        SAD
     }
 
-    public MyCharacter() {
-        setName("Unknown");
+    public MainCharacter() {
+        super();
         setMood(new Mood[]{Mood.UNKNOWN});
+        System.out.println("There is a character we know nothing.");
     }
 
-    public MyCharacter(String name) {
-        setName(name);
+    public MainCharacter(String name) {
+        super(name);
         setMood(new Mood[]{Mood.UNKNOWN});
+        System.out.println("There is a character called" + this.getName());
     }
-    public MyCharacter(String name, Mood[] mood) {
-        setName(name);
-        setMood(mood);
+    public MainCharacter(String name, Mood[] mood) {
+        super(name);
+        this.mood = mood;
+        System.out.println("There is a character called " + this.getName() + " Feels ");
     }
 
     public void setName(String name) {
