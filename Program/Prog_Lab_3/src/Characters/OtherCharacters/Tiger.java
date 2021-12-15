@@ -11,7 +11,7 @@ public class Tiger extends Subject {
 
     public String jumpForward(Weather weather) {
         if(weather.isBadWeather()) {
-            return this.name + " always jump forward. ";
+            return this.name + " always jump forward.";
         }
         return "";
     }
