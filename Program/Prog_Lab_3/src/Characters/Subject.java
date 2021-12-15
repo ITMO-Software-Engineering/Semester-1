@@ -99,7 +99,7 @@ public abstract class Subject implements Move,Say,Think {
 
     @Override
     public void say(String words) {
-        System.out.println(this.getName() + " says: " + '"' + words + '"' + '\n');
+        System.out.println(this.getName() + " says: " + '"' + words + '"');
     }
 
     @Override
@@ -109,7 +109,7 @@ public abstract class Subject implements Move,Say,Think {
 
     @Override
     public void say(Subject subject, String words) {
-        System.out.println(this.name + " tells " + subject.name + ':' + '"' + words + '"' + '\n');
+        System.out.println(this.name + " tells " + subject.name + ':' + '"' + words + '"');
     }
 
     @Override

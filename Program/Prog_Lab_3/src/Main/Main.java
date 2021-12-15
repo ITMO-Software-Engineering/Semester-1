@@ -46,6 +46,8 @@ public class Main {
 
         houseRabbit.showMember();
         Tiger tiger = new Tiger();
-        thirdCharacter.say("Today is the best day for adventure! Because");
+        thirdCharacter.say("Today is the best day for adventure!");
+        thirdCharacter.say("Because " + tiger.jumpForward(weather));
+        thirdCharacter.say("As soon as he is out of sight, they will all run away and he will never see them again.");
     }
 }

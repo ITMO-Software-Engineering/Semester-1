@@ -9,9 +9,10 @@ public class Tiger extends Subject {
         this.name = "tiger";
     }
 
-    public void jumpForward(Weather weather) {
+    public String jumpForward(Weather weather) {
         if(weather.isBadWeather()) {
-            System.out.println(this.name + " always jump forward.");
+            return this.name + " always jump forward. ";
         }
+        return "";
     }
 }
