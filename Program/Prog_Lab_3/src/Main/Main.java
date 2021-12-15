@@ -2,7 +2,10 @@ package Main;//Variant: 52190
 
 import Characters.Gender;
 import Characters.MainCharacters.MainCharacter;
-import Characters.Subject;
+import Characters.MainCharacters.Mood;
+import Characters.OtherCharacters.Bees;
+import Characters.OtherCharacters.People;
+import Characters.OtherCharacters.Tiger;
 import Environment.*;
 import Environment.Places.HouseRabbit;
 
@@ -17,6 +20,32 @@ public class Main {
 
         day.goNextDay();
         weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
-        firstCharacter.setMood(MainCharacter.Mood.NOT_AFRAID);
+        firstCharacter.setName("Pool");
+        firstCharacter.setMood(Mood.NOT_AFRAID);
+        firstCharacter.showMood();
+
+        Bees bees = new Bees();
+        firstCharacter.think(true, bees, weather);
+        firstCharacter.setMood(Mood.SAD);
+        firstCharacter.showMood();
+
+        MainCharacter secondCharacter = new MainCharacter("Piglet", Gender.MALE);
+        firstCharacter.move(secondCharacter);
+        firstCharacter.say(secondCharacter);
+        secondCharacter.think(false, new Bees(), weather);
+        People people = new People();
+        secondCharacter.think(true, people, weather);
+
+        HouseRabbit houseRabbit = new HouseRabbit();
+        MainCharacter thirdCharacter = new MainCharacter("Rabbit", Gender.MALE);
+        thirdCharacter.setLocation(houseRabbit);
+        firstCharacter.move(houseRabbit);
+        secondCharacter.move(houseRabbit);
+        houseRabbit.arriveMember(firstCharacter);
+        houseRabbit.arriveMember(secondCharacter);
+
+        houseRabbit.showMember();
+        Tiger tiger = new Tiger();
+        thirdCharacter.say("Today is the best day for adventure! Because");
     }
 }

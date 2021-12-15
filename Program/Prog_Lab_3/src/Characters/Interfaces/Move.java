@@ -2,6 +2,7 @@ package Characters.Interfaces;
 
 import Characters.OtherCharacters.Bees;
 import Characters.OtherCharacters.People;
+import Characters.Subject;
 import Environment.Places.Place;
 
 public interface Move {
@@ -9,12 +10,6 @@ public interface Move {
     void move(boolean isTimeWasted);
     void move(Place destination);
     void move(Place destination, boolean isTimeWasted);
-
-    void think(String about);
-
-    void say(String words);
-
-    void think(Bees bees);
-
-    void think(People people);
+    void move(Subject subject);
+    void move(Subject subject, boolean isTimeWasted);
 }

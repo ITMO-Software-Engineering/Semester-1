@@ -33,8 +33,8 @@ public class Weather {
         }
     }
 
-    public boolean isBadWeather(Weather weather) {
-        return weather.status.equals(Status.COLD_AND_FOGGY);
+    public boolean isBadWeather() {
+        return this.status.equals(Status.COLD_AND_FOGGY);
     }
 
     public Status getWeather() {
