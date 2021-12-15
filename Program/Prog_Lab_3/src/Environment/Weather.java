@@ -9,16 +9,28 @@ public class Weather {
 
     public Weather(Status status) {
         this.status = status;
+        System.out.println("The weather is " + status.toString() + ".");
     }
 
     public enum Status {
         WARM_AND_SUNNY,
         COLD_AND_FOGGY,
-        UNKNOWN
+        UNKNOWN;
+
+        public String toString() {
+            return super.toString().replace('_',' ').toLowerCase();
+        }
     }
 
     public void changeStatus(Status newStatus) {
         this.status = newStatus;
+        System.out.println("The weather changed into " + status.toString() + ".");
+        if(this.status.equals(Status.COLD_AND_FOGGY)) {
+            System.out.println("It's a really bad weather.");
+        }
+        if(this.status.equals(Status.WARM_AND_SUNNY)) {
+            System.out.println("It's a good weather.");
+        }
     }
 
     public boolean isBadWeather(Weather weather) {
@@ -27,15 +39,5 @@ public class Weather {
 
     public Status getWeather() {
         return this.status;
-    }
-
-    public String toString() {
-        if(this.status.equals(Status.WARM_AND_SUNNY)) {
-            return "warm and sunny";
-        }
-        if(this.status.equals(Status.COLD_AND_FOGGY)) {
-            return "cold and foggy";
-        }
-        return "unknown";
     }
 }

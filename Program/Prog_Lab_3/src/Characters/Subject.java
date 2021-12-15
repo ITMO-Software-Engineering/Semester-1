@@ -1,38 +1,77 @@
 package Characters;
 
 import Characters.Interfaces.*;
+import Environment.Places.HouseRabbit;
 import Environment.Places.Place;
+import Environment.Places.UnknownPlace;
 
-public abstract class Subject implements Think, Say, Move {
+public abstract class Subject implements Move {
 
     protected String name;
-    protected Place location;
-    protected Place destination;
+    protected Gender gender;
+    public Place location;
+    public Place destination;
 
     public Subject() {
-        this.name = "Unknown";
-        this.location = new Place();
+        this.name = "Someone";
+        this.gender = Gender.UNKNOWN;
     }
 
     public Subject(String name) {
         this.name = name;
-        this.location = new Place();
+        this.gender = Gender.UNKNOWN;
     }
 
-    public Subject(String name, Place location) {
+    public Subject(Gender gender) {
+        if(gender.equals(Gender.FEMALE)) {
+            this.name = "She";
+        }
+        else {
+            this.name = "He";
+        }
+        this.gender = gender;
+    }
+
+    public Subject(String name, Gender gender) {
         this.name = name;
-        this.location = location;
+        this.gender = gender;
     }
 
     @Override
-    public Void move(Place destination) {
+    public void move() {
+        this.destination = new UnknownPlace();
+        System.out.println(this.name + " set out.");
+    }
+
+    @Override
+    public void move(boolean isTimeWasted) {
+        this.destination = new UnknownPlace();
+        if(isTimeWasted) {
+            System.out.println(this.name + " set out.");
+        }
+        else System.out.println(this.name + " set out without wasting any time.");
+    }
+
+    @Override
+    public void move(Place destination) {
         this.destination = destination;
-        System.out.println(this.getName());
-        return null;
+        System.out.println(this.name + " moves to " + this.destination.getPlaceName() + ".");
+    }
+
+    @Override
+    public void move(Place destination, boolean isTimeWasted) {
+        this.destination = destination;
+        if(isTimeWasted) {
+            System.out.println(this.name + " moves to " + this.destination.getPlaceName() + ".");
+        }
+        else {
+            System.out.println(this.name + " moves to " + this.destination.getPlaceName() + "without wasting any time.");
+        }
     }
 
     @Override
     public Void say(String words) {
+        System.out.println(this.getName() + " says: " + words);
         return null;
     }
 
@@ -45,8 +84,11 @@ public abstract class Subject implements Think, Say, Move {
         return this.name;
     }
 
+    public String showGender() {
+        return this.gender.toString().toLowerCase();
+    }
+
     public Place getLocation() {
         return this.location;
     }
-
 }

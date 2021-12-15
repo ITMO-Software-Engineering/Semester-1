@@ -3,13 +3,12 @@ package Environment.Places;
 import Characters.MainCharacters.MainCharacter;
 import Characters.Subject;
 
-public class Place {
+public abstract class Place {
     String placeName;
     Subject[] member = new Subject[5];
     int numMember = 0;
 
     public Place() {
-        this.placeName = "unknown place";
     }
 
     public Place(String placeName) {
@@ -17,8 +16,11 @@ public class Place {
     }
 
     public void arriveCharacter(MainCharacter character) {
+        System.out.println(character.getName() + " arrives at " + character.destination);
         member[numMember] = character;
         numMember++;
+        character.location = character.destination;
+        character.destination = null;
     }
 
     public String getPlaceName() {
