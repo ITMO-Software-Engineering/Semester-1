@@ -7,7 +7,7 @@ import Main.Main;
 import java.util.Locale;
 
 public class MainCharacter extends Subject {
-    protected Mood[] mood;
+    protected Mood mood;
 
     public enum Mood {
         UNKNOWN,
@@ -37,20 +37,12 @@ public class MainCharacter extends Subject {
         this.name = name;
     }
 
-    public void setMood(Mood[] mood) {
+    public void setMood(Mood mood) {
         this.mood = mood;
         System.out.println(this.name + " feels " + this.showMood());
     }
 
-    public void changeMood(Mood[] newMood) {
-        this.mood = newMood;
-    }
-
     public String showMood() {
-        String allMood = new String();
-        for(Mood mood : this.mood) {
-            allMood += mood.toString().toLowerCase();
-        }
-        return allMood;
+        return this.mood.toString().replace('_', ' ').toLowerCase();
     }
 }

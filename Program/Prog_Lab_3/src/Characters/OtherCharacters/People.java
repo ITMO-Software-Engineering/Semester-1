@@ -10,4 +10,9 @@ public class People extends Subject {
             System.out.println(this.name + " get lose.");
         }
     }
+
+    @Override
+    public void think(String about) {
+
+    }
 }

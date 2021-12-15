@@ -1,5 +1,9 @@
 package Characters.Interfaces;
 
+import Characters.OtherCharacters.Bees;
+import Characters.OtherCharacters.People;
+
 public interface Think {
-    Void think(String about);
+    void think(Bees bees);
+    void think(People people);
 }

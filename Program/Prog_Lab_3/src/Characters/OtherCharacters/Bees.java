@@ -10,4 +10,9 @@ public class Bees extends Subject {
             System.out.println(this.name + "always jump forward.");
         }
     }
+
+    @Override
+    public void think(String about) {
+
+    }
 }

@@ -17,6 +17,6 @@ public class Main {
 
         day.goNextDay();
         weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
-        firstCharacter.setMood(new MainCharacter.Mood[]{});
+        firstCharacter.setMood(MainCharacter.Mood.NOT_AFRAID);
     }
 }

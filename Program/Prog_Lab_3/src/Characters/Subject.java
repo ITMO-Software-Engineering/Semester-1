@@ -1,11 +1,12 @@
 package Characters;
 
 import Characters.Interfaces.*;
-import Environment.Places.HouseRabbit;
+import Characters.OtherCharacters.Bees;
+import Characters.OtherCharacters.People;
 import Environment.Places.Place;
 import Environment.Places.UnknownPlace;
 
-public abstract class Subject implements Move {
+public abstract class Subject implements Move,Say,Think {
 
     protected String name;
     protected Gender gender;
@@ -70,14 +71,20 @@ public abstract class Subject implements Move {
     }
 
     @Override
-    public Void say(String words) {
+    public void say(String words) {
         System.out.println(this.getName() + " says: " + words);
-        return null;
+
     }
 
     @Override
-    public Void think(String about) {
-        return null;
+    public void think(Bees bees) {
+        System.out.print(this.name + " thinks about ");
+
+    }
+
+    @Override
+    public void think(People people) {
+
     }
 
     public String getName() {
