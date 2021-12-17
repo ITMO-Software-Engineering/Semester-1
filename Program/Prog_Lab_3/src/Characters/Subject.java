@@ -157,21 +157,26 @@ public abstract class Subject implements Move,Say,Think {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object obj) {
+        if(this == obj) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if(obj == null) {
             return false;
         }
-        Subject sub=(Subject) o;
-        if(this.hashCode()!=o.hashCode()){
+        if(getClass() != obj.getClass()) {
             return false;
         }
-        return (this.name==sub.name);
+
+        Subject sub = (Subject) obj;
+        return this.name.equals(sub.name) && this.gender.equals(sub.gender);
     }
 
     public int hashCode() {
-        return 0;
+        int result = 31;
+        result = result * 31 + name.hashCode();
+        result = result * 31 + gender.hashCode();
+
+        return  result;
     }
 }

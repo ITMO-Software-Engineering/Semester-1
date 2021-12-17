@@ -1,7 +1,5 @@
 package Characters.Interfaces;
 
-import Characters.OtherCharacters.Bees;
-import Characters.OtherCharacters.People;
 import Characters.Subject;
 import Environment.Places.Place;
 

@@ -2,9 +2,6 @@ package Characters.MainCharacters;
 
 import Characters.*;
 import Environment.Places.Place;
-import Main.Main;
-
-import java.util.Locale;
 
 public class MainCharacter extends Subject {
 

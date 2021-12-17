@@ -43,18 +43,26 @@ public abstract class Place {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object obj) {
+        if(this == obj) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if(obj == null) {
             return false;
         }
-        Place place=(Place)o;
-        if(this.hashCode()!=o.hashCode()){
+        if(getClass() != obj.getClass()) {
             return false;
         }
-        return (this.placeName == place.placeName);
+
+        Place sub = (Place) obj;
+        return this.placeName.equals(sub.placeName);
+    }
+
+    public int hashCode() {
+        int result = 31;
+        result = result * 31 + placeName.hashCode();
+
+        return  result;
     }
 
     public String toString() {
