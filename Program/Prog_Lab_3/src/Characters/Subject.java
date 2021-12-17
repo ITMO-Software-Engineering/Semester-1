@@ -170,4 +170,8 @@ public abstract class Subject implements Move,Say,Think {
         }
         return (this.name==sub.name);
     }
+
+    public int hashCode() {
+        return 0;
+    }
 }
