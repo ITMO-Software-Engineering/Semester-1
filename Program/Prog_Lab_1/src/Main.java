@@ -58,11 +58,7 @@ class ThreeArray {
     void print_ans() {
         for (double[] line : ans) {
             for (double answer : line) {
-                if(answer < 0) {
-                    System.out.printf("%.2f ", answer);
-                } else {
-                    System.out.printf("+%.2f ", answer);
-                }
+                System.out.printf("%6.2f ", answer);
             }
             System.out.println();
         }
