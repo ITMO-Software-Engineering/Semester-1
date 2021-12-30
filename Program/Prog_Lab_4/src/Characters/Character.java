@@ -11,16 +11,21 @@ import Environment.Weather;
 
 public abstract class Character implements Move,Say,Think {
 
-    /** Enum of Characters
-     * Gender shows the gender of Characters, the value can be MALE, FEMALE and UNKNOWN
-     * Mood shows the mood of Characters, the value can be VERY_HAPPY, NOT_AFRAID, SAD, COLD_AND_SAD and UNKNOWN
+    /**
+     * shows the gender of Characters, the value can be MALE, FEMALE and UNKNOWN
      */
     public enum Gender {
         MALE,
         FEMALE,
-        UNKNOWN
+        UNKNOWN;
+        public String toString() {
+            return ;
+        }
     }
 
+    /**
+     * shows the mood of Characters, the value can be VERY_HAPPY, NOT_AFRAID, SAD, COLD_AND_SAD and UNKNOWN
+     */
     public enum Mood {
         VERY_HAPPY,
         NOT_AFRAID,
@@ -29,22 +34,24 @@ public abstract class Character implements Move,Say,Think {
         UNKNOWN
     }
 
-    /** Field of Characters
-     * name shows the name of Character
-     *  Gender shows the gender of Character
-     *  mood shows the mood of character
-     *  location and destination show where the character is and where is he going to, these two are for the move function to change the location of character
+    /** shows the name of Character
      */
     protected String name;
+    /** shows the gender of Character
+     */
     protected Gender gender;
+    /** shows the mood of character
+     */
     protected Mood mood;
+    /** shows the location of character
+     */
     public Place location;
+    /** shows where the character is going to
+     */
     public Place destination;
 
-    /** Structures of Characters
-     * Character() build an unknown object
-     * Character(String name) build an object and set its name
-     * Character(Gender) build an object and set its gender
+    /**
+     * Build an unknown object which name is "Someone", gender is {@link Gender}.UNKNOWN, location is {@link UnknownPlace}
      */
     public Character() {
         this.name = "Someone";
@@ -52,12 +59,20 @@ public abstract class Character implements Move,Say,Think {
         this.location = new UnknownPlace();
     }
 
+    /**
+     * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its name
+     * @param name The name of this object
+     */
     public Character(String name) {
         this.name = name;
         this.gender = Gender.UNKNOWN;
         this.location = new UnknownPlace();
     }
 
+    /**
+     * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its gender
+     * @param gender The gender of this object
+     */
     public Character(Gender gender) {
         if(gender.equals(Gender.FEMALE)) {
             this.name = "She";
@@ -69,6 +84,11 @@ public abstract class Character implements Move,Say,Think {
         this.location = new UnknownPlace();
     }
 
+    /**
+     * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its name and gender
+     * @param name The name of this object
+     * @param gender The gender of this object
+     */
     public Character(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
@@ -166,8 +186,20 @@ public abstract class Character implements Move,Say,Think {
         return this.name;
     }
 
-    public String showGender() {
-        return this.gender.toString().toLowerCase();
+    public Gender getGender() {
+        return this.gender;
+    }
+
+    public Mood getMood() {
+        return this.mood;
+    }
+
+    public Place getLocation() {
+        return this.location;
+    }
+
+    public Place getDestination() {
+        return this.destination;
     }
 
     public void setMood(Mood mood) {
@@ -182,9 +214,7 @@ public abstract class Character implements Move,Say,Think {
         this.location = location;
     }
 
-    public Place getLocation() {
-        return this.location;
-    }
+
 
     @Override
     public boolean equals(Object obj) {
