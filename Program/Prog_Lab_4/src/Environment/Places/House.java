@@ -19,11 +19,4 @@ public class House extends Place {
         System.out.println("There is a place called " + this.placeName + ".");
     }
 
-    public void showMember() {
-        for(Character sub : this.member) {
-            System.out.print(sub.getName() + " ");
-        }
-        System.out.print("meet at " + this.placeName + ".\n");
-    }
-
 }

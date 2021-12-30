@@ -5,7 +5,7 @@ import Characters.Character;
 
 public abstract class Place {
     public String placeName;
-    MainCharacter[] member = new MainCharacter[3];
+    MainCharacter[] member = new MainCharacter[7];
     int numMember = 0;
 
     public Place() {
@@ -28,19 +28,22 @@ public abstract class Place {
     }
 
     public void showMember() {
-        System.out.print("In the " + this.placeName + " ");
-        for(Character sub : member) {
-            if(sub == null) {
+        System.out.print("Now in the " + this.placeName + " are: ");
+        for(Character ch : member) {
+            if(ch == null) {
                 continue;
             }
-            System.out.print(sub.getName() + " ");
+            System.out.print(ch.getName() + " ");
         }
         System.out.print(".\n");
     }
 
     public void meetMember() {
-        for(Character sub : this.member) {
-            System.out.print(sub.getName() + " ");
+        for(Character ch : this.member) {
+            if(ch != null) {
+                System.out.print(ch.getName() + " ");
+            }
+
         }
         System.out.print("meet at " + this.placeName + ".\n");
     }
