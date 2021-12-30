@@ -19,6 +19,7 @@ public abstract class Character implements Move,Say,Think {
 
     public enum Mood {
         UNKNOWN,
+        VERY_HAPPY,
         NOT_AFRAID,
         SAD,
         COLD_AND_SAD

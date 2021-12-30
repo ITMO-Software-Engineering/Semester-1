@@ -11,6 +11,10 @@ public class Main {
     public static void main(String[] args) {
 
         {//part1
+            Character smallThing = new Character("Small Things") {
+
+            };
+            System.out.println(smallThing.getName());
 
         }
 
