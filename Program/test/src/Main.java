@@ -1,5 +1,5 @@
 public class Main {
-    public static void waiting(String[] args) {
-
+    public static void main(String[] args) {
+        //test change
     }
 }
