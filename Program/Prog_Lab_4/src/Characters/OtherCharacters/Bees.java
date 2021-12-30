@@ -3,7 +3,7 @@ package Characters.OtherCharacters;
 import Characters.Character;
 import Environment.Weather;
 
-public class Bees extends Character {
+public class Bees extends OtherCharacter {
 
     public Bees() {
         this.name = "Bees";

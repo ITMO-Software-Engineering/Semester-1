@@ -4,7 +4,7 @@ import Characters.Character;
 import Environment.Places.*;
 import Environment.Weather;
 
-public class People extends Character {
+public class People extends OtherCharacter {
 
     @Override
     public void showMood() {
