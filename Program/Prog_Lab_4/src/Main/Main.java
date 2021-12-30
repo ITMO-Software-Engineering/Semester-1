@@ -36,11 +36,13 @@ public class Main {
             firstCharacter.move(secondCharacter);
             firstCharacter.say(secondCharacter);
             secondCharacter.think(false, new Bees(), weather);
-            People people = new People();
+            Forest forest = new Forest();
+            //Forest.Jungle jungle = forest.new Jungle();
+            People people = new People(forest);
             secondCharacter.think(true, people, weather);
 
-            HouseRabbit houseRabbit = new HouseRabbit();
             MainCharacter thirdCharacter = new MainCharacter("Rabbit", Character.Gender.MALE);
+            House houseRabbit = new House(thirdCharacter);
             thirdCharacter.setLocation(houseRabbit);
             firstCharacter.move(houseRabbit);
             secondCharacter.move(houseRabbit);

@@ -1,7 +1,7 @@
 package Characters.OtherCharacters;
 
 import Characters.Character;
-import Environment.Places.Forest;
+import Environment.Places.*;
 import Environment.Weather;
 
 public class People extends Character {
@@ -11,10 +11,10 @@ public class People extends Character {
         System.out.print(" feels " + this.mood.toString().replace('_', ' ').toLowerCase() + ".\n");
     }
 
-    public People() {
+    public People(Place place) {
         this.name = "people";
         this.setMood(Mood.UNKNOWN);
-        this.location = new Forest();
+        this.location = place;
     }
 
     public void getLose(Weather weather) {
