@@ -6,6 +6,9 @@ import Characters.OtherCharacters.*;
 import Environment.*;
 import Environment.Places.*;
 
+/**<p>Project name: Prog_Lab_4 </p>
+ * @author <a href="https://github.com/Tolia-GH">Tolia</a>
+ */
 public class Main {
 
     public static void main(String[] args) {

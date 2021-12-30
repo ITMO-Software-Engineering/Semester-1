@@ -29,8 +29,11 @@ public abstract class Character implements Move,Say,Think {
         UNKNOWN
     }
 
-    /**
-     *
+    /** Field of Characters
+     * name shows the name of Character
+     *  Gender shows the gender of Character
+     *  mood shows the mood of character
+     *  location and destination show where the character is and where is he going to, these two are for the move function to change the location of character
      */
     protected String name;
     protected Gender gender;
@@ -38,6 +41,11 @@ public abstract class Character implements Move,Say,Think {
     public Place location;
     public Place destination;
 
+    /** Structures of Characters
+     * Character() build an unknown object
+     * Character(String name) build an object and set its name
+     * Character(Gender) build an object and set its gender
+     */
     public Character() {
         this.name = "Someone";
         this.gender = Gender.UNKNOWN;

@@ -1,5 +1,9 @@
 package Main;//Variant: 52190
 
+/**@Project_Name Prog_Lab_3
+ * @author <a href = "https://github.com/Tolia-GH"> Tolia </a>
+ */
+
 import Characters.Gender;
 import Characters.MainCharacters.MainCharacter;
 import Characters.MainCharacters.Mood;
