@@ -54,6 +54,7 @@ public class Main {
             houseRabbit.arriveMember(secondCharacter);
 
             houseRabbit.meetMember();
+            houseRabbit.showMember();
             Tigger tigger = new Tigger();
 
             thirdCharacter.say("Today is the best day for adventure!");
