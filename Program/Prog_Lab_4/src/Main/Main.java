@@ -61,8 +61,9 @@ public class Main {
                     return "";
                 }
             };
+
             thirdCharacter.say("Today is the best day for adventure!");
-            thirdCharacter.say("Because " + tigger);
+            thirdCharacter.say("Because " + tigger.jumpForward(weather));
             thirdCharacter.say("As soon as he is out of sight, they will all run away and he will never see them again.");
         }
 
