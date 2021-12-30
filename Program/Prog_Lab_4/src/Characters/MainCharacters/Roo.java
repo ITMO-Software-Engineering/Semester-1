@@ -2,5 +2,5 @@ package Characters.MainCharacters;
 
 import Characters.Character;
 
-public class Roo extends Character {
+public class Roo extends MainCharacter {
 }

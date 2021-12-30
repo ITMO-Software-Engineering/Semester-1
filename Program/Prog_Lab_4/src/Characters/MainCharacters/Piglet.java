@@ -2,5 +2,5 @@ package Characters.MainCharacters;
 
 import Characters.Character;
 
-public class Piglet extends Character {
+public class Piglet extends MainCharacter {
 }

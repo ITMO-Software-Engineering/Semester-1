@@ -11,6 +11,10 @@ import Environment.Weather;
 
 public abstract class Character implements Move,Say,Think {
 
+    /** Enum of Characters
+     * Gender shows the gender of Characters, the value can be MALE, FEMALE and UNKNOWN
+     * Mood shows the mood of Characters, the value can be VERY_HAPPY, NOT_AFRAID, SAD, COLD_AND_SAD and UNKNOWN
+     */
     public enum Gender {
         MALE,
         FEMALE,
@@ -18,16 +22,19 @@ public abstract class Character implements Move,Say,Think {
     }
 
     public enum Mood {
-        UNKNOWN,
         VERY_HAPPY,
         NOT_AFRAID,
         SAD,
-        COLD_AND_SAD
+        COLD_AND_SAD,
+        UNKNOWN
     }
 
+    /**
+     *
+     */
     protected String name;
     protected Gender gender;
-    public Mood mood;
+    protected Mood mood;
     public Place location;
     public Place destination;
 
@@ -187,6 +194,7 @@ public abstract class Character implements Move,Say,Think {
         return this.name.equals(sub.name) && this.gender.equals(sub.gender);
     }
 
+    @Override
     public int hashCode() {
         int result = 31;
         result = result * 31 + name.hashCode();
