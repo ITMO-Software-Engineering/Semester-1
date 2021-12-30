@@ -2,5 +2,5 @@ package Characters.MainCharacters;
 
 import Characters.Character;
 
-public class Kenga extends Character {
+public class Kanga extends Character {
 }
