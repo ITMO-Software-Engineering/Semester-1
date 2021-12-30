@@ -1,6 +1,6 @@
 package Environment.Places;
 
-import Characters.Subject;
+import Characters.Character;
 
 public class HouseRabbit extends Place {
 
@@ -10,7 +10,7 @@ public class HouseRabbit extends Place {
     }
 
     public void showMember() {
-        for(Subject sub : this.member) {
+        for(Character sub : this.member) {
             System.out.print(sub.getName() + " ");
         }
         System.out.print("meet at " + this.placeName + ".\n");

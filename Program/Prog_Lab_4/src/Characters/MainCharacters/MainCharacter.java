@@ -1,10 +1,9 @@
 package Characters.MainCharacters;
 
-import Characters.Gender;
-import Characters.Subject;
+import Characters.Character;
 import Environment.Places.Place;
 
-public class MainCharacter extends Subject {
+public class MainCharacter extends Character {
 
     public MainCharacter() {
         super();

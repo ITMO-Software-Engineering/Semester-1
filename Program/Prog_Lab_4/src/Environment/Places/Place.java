@@ -1,7 +1,7 @@
 package Environment.Places;
 
 import Characters.MainCharacters.MainCharacter;
-import Characters.Subject;
+import Characters.Character;
 
 public abstract class Place {
     public String placeName;
@@ -29,7 +29,7 @@ public abstract class Place {
 
     public void showMember() {
         System.out.print("In the " + this.placeName + " ");
-        for(Subject sub : member) {
+        for(Character sub : member) {
             if(sub == null) {
                 continue;
             }
@@ -39,7 +39,7 @@ public abstract class Place {
     }
 
     public void meetMember() {
-        for(Subject sub : this.member) {
+        for(Character sub : this.member) {
             System.out.print(sub.getName() + " ");
         }
         System.out.print("meet at " + this.placeName + ".\n");

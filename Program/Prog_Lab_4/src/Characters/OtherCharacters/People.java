@@ -1,11 +1,10 @@
 package Characters.OtherCharacters;
 
-import Characters.MainCharacters.Mood;
-import Characters.Subject;
+import Characters.Character;
 import Environment.Places.Forest;
 import Environment.Weather;
 
-public class People extends Subject {
+public class People extends Character {
 
     @Override
     public void showMood() {

@@ -1,9 +1,9 @@
 package Characters.OtherCharacters;
 
-import Characters.Subject;
+import Characters.Character;
 import Environment.Weather;
 
-public class Bees extends Subject {
+public class Bees extends Character {
 
     public Bees() {
         this.name = "Bees";

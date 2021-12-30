@@ -1,11 +1,10 @@
-package Characters.OtherCharacters;
+package Characters.MainCharacters;
 
-import Characters.Subject;
+import Characters.Character;
 import Environment.Weather;
 
-public class Tiger extends Subject {
-
-    public Tiger() {
+public class Tigger extends Character {
+    public Tigger() {
         this.name = "tiger";
     }
 

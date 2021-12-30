@@ -1,14 +1,10 @@
 package Main;//Variant: 52190
 
-import Characters.Gender;
-import Characters.MainCharacters.MainCharacter;
-import Characters.MainCharacters.Mood;
-import Characters.OtherCharacters.Bees;
-import Characters.OtherCharacters.People;
-import Characters.OtherCharacters.Tiger;
-import Environment.Day;
-import Environment.Places.HouseRabbit;
-import Environment.Weather;
+import Characters.Character;
+import Characters.MainCharacters.*;
+import Characters.OtherCharacters.*;
+import Environment.*;
+import Environment.Places.*;
 
 public class Main {
 
@@ -19,7 +15,7 @@ public class Main {
         }
 
         {//part 2
-            MainCharacter firstCharacter = new MainCharacter(Gender.MALE);
+            MainCharacter firstCharacter = new MainCharacter(Character.Gender.MALE);
 
             Day day = new Day(1);
             Weather weather = new Weather(Weather.Status.WARM_AND_SUNNY);
@@ -28,15 +24,15 @@ public class Main {
             day.goNextDay();
             weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
             firstCharacter.setName("Pool");
-            firstCharacter.setMood(Mood.NOT_AFRAID);
+            firstCharacter.setMood(Character.Mood.NOT_AFRAID);
             firstCharacter.showMood();
 
             Bees bees = new Bees();
             firstCharacter.think(true, bees, weather);
-            firstCharacter.setMood(Mood.SAD);
+            firstCharacter.setMood(Character.Mood.SAD);
             firstCharacter.showMood();
 
-            MainCharacter secondCharacter = new MainCharacter("Piglet", Gender.MALE);
+            MainCharacter secondCharacter = new MainCharacter("Piglet", Character.Gender.MALE);
             firstCharacter.move(secondCharacter);
             firstCharacter.say(secondCharacter);
             secondCharacter.think(false, new Bees(), weather);
@@ -44,7 +40,7 @@ public class Main {
             secondCharacter.think(true, people, weather);
 
             HouseRabbit houseRabbit = new HouseRabbit();
-            MainCharacter thirdCharacter = new MainCharacter("Rabbit", Gender.MALE);
+            MainCharacter thirdCharacter = new MainCharacter("Rabbit", Character.Gender.MALE);
             thirdCharacter.setLocation(houseRabbit);
             firstCharacter.move(houseRabbit);
             secondCharacter.move(houseRabbit);
@@ -52,15 +48,7 @@ public class Main {
             houseRabbit.arriveMember(secondCharacter);
 
             houseRabbit.meetMember();
-            Tiger tiger = new Tiger();
-            MainCharacter tigger = new MainCharacter("Tiger",Gender.MALE) {
-                public String jumpForward(Weather weather) {
-                    if(weather.isBadWeather()) {
-                        return this.name + " always jump forward.";
-                    }
-                    return "";
-                }
-            };
+            Tigger tigger = new Tigger();
 
             thirdCharacter.say("Today is the best day for adventure!");
             thirdCharacter.say("Because " + tigger.jumpForward(weather));

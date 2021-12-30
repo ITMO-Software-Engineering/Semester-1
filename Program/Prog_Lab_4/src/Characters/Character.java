@@ -3,14 +3,26 @@ package Characters;
 import Characters.Interfaces.Move;
 import Characters.Interfaces.Say;
 import Characters.Interfaces.Think;
-import Characters.MainCharacters.Mood;
 import Characters.OtherCharacters.Bees;
 import Characters.OtherCharacters.People;
 import Environment.Places.Place;
 import Environment.Places.UnknownPlace;
 import Environment.Weather;
 
-public abstract class Subject implements Move,Say,Think {
+public abstract class Character implements Move,Say,Think {
+
+    public enum Gender {
+        MALE,
+        FEMALE,
+        UNKNOWN
+    }
+
+    public enum Mood {
+        UNKNOWN,
+        NOT_AFRAID,
+        SAD,
+        COLD_AND_SAD
+    }
 
     protected String name;
     protected Gender gender;
@@ -18,19 +30,19 @@ public abstract class Subject implements Move,Say,Think {
     public Place location;
     public Place destination;
 
-    public Subject() {
+    public Character() {
         this.name = "Someone";
         this.gender = Gender.UNKNOWN;
         this.location = new UnknownPlace();
     }
 
-    public Subject(String name) {
+    public Character(String name) {
         this.name = name;
         this.gender = Gender.UNKNOWN;
         this.location = new UnknownPlace();
     }
 
-    public Subject(Gender gender) {
+    public Character(Gender gender) {
         if(gender.equals(Gender.FEMALE)) {
             this.name = "She";
         }
@@ -41,7 +53,7 @@ public abstract class Subject implements Move,Say,Think {
         this.location = new UnknownPlace();
     }
 
-    public Subject(String name, Gender gender) {
+    public Character(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
         this.location = new UnknownPlace();
@@ -80,18 +92,18 @@ public abstract class Subject implements Move,Say,Think {
     }
 
     @Override
-    public void move(Subject subject) {
-        this.destination = subject.location;
-        System.out.println(this.name + " go to place " + subject.name + ".");
+    public void move(Character character) {
+        this.destination = character.location;
+        System.out.println(this.name + " go to place " + character.name + ".");
     }
 
     @Override
-    public void move(Subject subject, boolean isTimeWasted) {
-        this.destination = subject.location;
+    public void move(Character character, boolean isTimeWasted) {
+        this.destination = character.location;
         if(isTimeWasted) {
-            System.out.println(this.name + " go to place " + subject.name + ".");
+            System.out.println(this.name + " go to place " + character.name + ".");
         }
-        else System.out.println(this.name + " go to place " + subject.name + " without wasting any time. ");
+        else System.out.println(this.name + " go to place " + character.name + " without wasting any time. ");
     }
 
     @Override
@@ -105,13 +117,13 @@ public abstract class Subject implements Move,Say,Think {
     }
 
     @Override
-    public void say(Subject subject) {
-        System.out.println(this.name + " tells " + subject.name + " about this." );
+    public void say(Character character) {
+        System.out.println(this.name + " tells " + character.name + " about this." );
     }
 
     @Override
-    public void say(Subject subject, String words) {
-        System.out.println(this.name + " tells " + subject.name + ':' + '"' + words + '"');
+    public void say(Character character, String words) {
+        System.out.println(this.name + " tells " + character.name + ':' + '"' + words + '"');
     }
 
     @Override
@@ -170,7 +182,7 @@ public abstract class Subject implements Move,Say,Think {
             return false;
         }
 
-        Subject sub = (Subject) obj;
+        Character sub = (Character) obj;
         return this.name.equals(sub.name) && this.gender.equals(sub.gender);
     }
 
