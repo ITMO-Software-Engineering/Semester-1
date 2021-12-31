@@ -15,11 +15,11 @@ public class MainCharacter extends Character {
     }
     public MainCharacter(Gender gender) {
         super(gender);
-        System.out.println("There is a " + this.showGender() + " character.");
+        System.out.println("There is a " + this.gender.toString() + " character.");
     }
     public MainCharacter(String name, Gender gender) {
         super(name, gender);
-        System.out.println("There is a " + this.showGender() + " character called " + this.getName() + ".");
+        System.out.println("There is a " + this.gender.toString() + " character called " + this.getName() + ".");
     }
 
     public void setName(String name) {

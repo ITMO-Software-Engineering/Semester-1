@@ -12,41 +12,44 @@ import Environment.Weather;
 public abstract class Character implements Move,Say,Think {
 
     /**
-     * shows the gender of Characters, the value can be MALE, FEMALE and UNKNOWN
+     * All the genders of Characters
      */
     public enum Gender {
         MALE,
         FEMALE,
         UNKNOWN;
         public String toString() {
-            return ;
+            return super.toString().toLowerCase();
         }
     }
 
     /**
-     * shows the mood of Characters, the value can be VERY_HAPPY, NOT_AFRAID, SAD, COLD_AND_SAD and UNKNOWN
+     * All the moods of Characters
      */
     public enum Mood {
         VERY_HAPPY,
         NOT_AFRAID,
         SAD,
         COLD_AND_SAD,
-        UNKNOWN
+        UNKNOWN;
+        public String toString() {
+            return super.toString().toLowerCase();
+        }
     }
 
-    /** shows the name of Character
+    /** Shows the name of Character
      */
     protected String name;
-    /** shows the gender of Character
+    /** Shows the gender of Character
      */
     protected Gender gender;
-    /** shows the mood of character
+    /** Shows the mood of character
      */
     protected Mood mood;
-    /** shows the location of character
+    /** Shows the location of character
      */
     public Place location;
-    /** shows where the character is going to
+    /** Shows where the character is going to
      */
     public Place destination;
 
@@ -61,7 +64,7 @@ public abstract class Character implements Move,Say,Think {
 
     /**
      * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its name
-     * @param name The name of this object
+     * @param name Set the name of this object
      */
     public Character(String name) {
         this.name = name;
@@ -71,7 +74,7 @@ public abstract class Character implements Move,Say,Think {
 
     /**
      * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its gender
-     * @param gender The gender of this object
+     * @param gender Set the gender of this object
      */
     public Character(Gender gender) {
         if(gender.equals(Gender.FEMALE)) {
@@ -86,8 +89,8 @@ public abstract class Character implements Move,Say,Think {
 
     /**
      * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its name and gender
-     * @param name The name of this object
-     * @param gender The gender of this object
+     * @param name Set the name of this object
+     * @param gender Set the gender of this object
      */
     public Character(String name, Gender gender) {
         this.name = name;
@@ -95,27 +98,41 @@ public abstract class Character implements Move,Say,Think {
         this.location = new UnknownPlace();
     }
 
+    /**
+     * Walk around
+     */
     @Override
     public void move() {
-        this.destination = new UnknownPlace();
-        System.out.println(this.name + " set out.");
+        System.out.println(this.name + " walk around.");
     }
 
+    /**
+     * Walk around and check if time was wasted
+     * @param isTimeWasted Judge if the time was wasted
+     */
     @Override
     public void move(boolean isTimeWasted) {
-        this.destination = new UnknownPlace();
         if(isTimeWasted) {
-            System.out.println(this.name + " set out.");
+            System.out.println(this.name + " walk around.");
         }
-        else System.out.println(this.name + " set out without wasting any time.");
+        else System.out.println(this.name + " walk around without wasting any time.");
     }
 
+    /**
+     * Move to the destination
+     * @param destination Set the destination of this movement
+     */
     @Override
     public void move(Place destination) {
         this.destination = destination;
         System.out.println(this.name + " moves to " + this.destination.toString() + ".");
     }
 
+    /**
+     * Move to the destination and check if time was wasted
+     * @param destination Set the destination of this movement
+     * @param isTimeWasted Judge if time was wasted
+     */
     @Override
     public void move(Place destination, boolean isTimeWasted) {
         this.destination = destination;
@@ -127,12 +144,21 @@ public abstract class Character implements Move,Say,Think {
         }
     }
 
+    /**
+     * Move to the location of other character
+     * @param character Set the destination
+     */
     @Override
     public void move(Character character) {
         this.destination = character.location;
         System.out.println(this.name + " go to place " + character.name + ".");
     }
 
+    /**
+     * Move to the location of other character and check if time was wasted
+     * @param character Set the destination
+     * @param isTimeWasted Judge if time was wasted
+     */
     @Override
     public void move(Character character, boolean isTimeWasted) {
         this.destination = character.location;
@@ -142,21 +168,37 @@ public abstract class Character implements Move,Say,Think {
         else System.out.println(this.name + " go to place " + character.name + " without wasting any time. ");
     }
 
+    /**
+     * Self talking of something unknown
+     */
     @Override
     public void say() {
         System.out.println(this.name + "talk something to himself");
     }
 
+    /**
+     * Say something
+     * @param words The words which was said
+     */
     @Override
     public void say(String words) {
         System.out.println(this.getName() + " says: " + '"' + words + '"');
     }
 
+    /**
+     * Say something unknown to who
+     * @param character The target of this conversation
+     */
     @Override
     public void say(Character character) {
         System.out.println(this.name + " tells " + character.name + " about this." );
     }
 
+    /**
+     * Say something to who
+     * @param character The target of this conversation
+     * @param words The words which was said
+     */
     @Override
     public void say(Character character, String words) {
         System.out.println(this.name + " tells " + character.name + ':' + '"' + words + '"');
@@ -182,6 +224,10 @@ public abstract class Character implements Move,Say,Think {
         people.getLose(weather);
     }
 
+    /**
+     * Get the name of this object
+     * @return The name of this object
+     */
     public String getName() {
         return this.name;
     }
@@ -214,7 +260,9 @@ public abstract class Character implements Move,Say,Think {
         this.location = location;
     }
 
-
+    public void setDestination(Place destination) {
+        this.destination = destination;
+    }
 
     @Override
     public boolean equals(Object obj) {
