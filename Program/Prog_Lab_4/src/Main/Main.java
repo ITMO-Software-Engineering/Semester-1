@@ -42,7 +42,7 @@ public class Main {
 
             MainCharacter secondCharacter = new MainCharacter("Piglet", Character.Gender.MALE);
             firstCharacter.move(secondCharacter);
-            firstCharacter.say(secondCharacter);
+            firstCharacter.tell(secondCharacter);
             secondCharacter.think(false, new Bees(), weather);
             Forest forest = new Forest();
             //Forest.Jungle jungle = forest.new Jungle();
