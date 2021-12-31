@@ -1,5 +1,6 @@
 package Characters.Interfaces;
 
+import Characters.MainCharacters.MainCharacter;
 import Characters.MyCharacter;
 import Environment.Places.Place;
 
@@ -10,4 +11,6 @@ public interface Move {
     void move(Place destination, boolean isTimeWasted);
     void move(MyCharacter myCharacter);
     void move(MyCharacter myCharacter, boolean isTimeWasted);
+
+    void escape(MainCharacter[] mainCharacters);
 }

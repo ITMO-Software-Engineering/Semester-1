@@ -97,6 +97,14 @@ public class MainCharacter extends MyCharacter implements Move {
         else System.out.println(this.getName() + " go to place " + myCharacter.getName() + " without wasting any time. ");
     }
 
+    @Override
+    public void escape(MainCharacter[] mainCharacters) {
+        for (MainCharacter mainChar: mainCharacters) {
+            System.out.print(mainChar.getName() + " ");
+        }
+        System.out.print("escape.\n");
+    }
+
     public void setLocation(Place location) {
         super.setLocation(location);
         this.location.setMember(this);
