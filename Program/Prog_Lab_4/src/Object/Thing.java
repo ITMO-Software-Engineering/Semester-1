@@ -1,8 +1,10 @@
 package Object;
 
+import Characters.MyCharacter;
+
 public class Thing {
 
-    Character[] participants = new Character[7];
+    MyCharacter[] participants = new MyCharacter[7];
     private int numParticipants = 0;
 
     public enum State {
@@ -11,15 +13,15 @@ public class Thing {
         UNKNOWN
     }
 
-    public void takePartIn(Character character) {
-
+    public void takePartIn(MyCharacter myCharacter) {
+        System.out.println(myCharacter.getName());
     }
 
     public void getWorse() {
 
     }
 
-    public Character[] getParticipants() {
+    public MyCharacter[] getParticipants() {
         return this.participants;
     }
 

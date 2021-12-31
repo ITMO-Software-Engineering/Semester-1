@@ -1,6 +1,6 @@
 package Main;//Variant: 52190
 
-import Characters.Character;
+import Characters.MyCharacter;
 import Characters.MainCharacters.*;
 import Characters.OtherCharacters.*;
 import Environment.*;
@@ -15,6 +15,8 @@ public class Main {
 
         {//part1
             Piglet piglet = new Piglet();
+            piglet.setMood(MyCharacter.Mood.HAPPY, "No Reason");
+            System.out.println(piglet.getMood().toString() + piglet.getMood().getReason());
 
             WinnieThePooh winnieThePooh = new WinnieThePooh();
 
@@ -23,7 +25,7 @@ public class Main {
         }
 
         {//part 2
-            MainCharacter firstCharacter = new MainCharacter(Character.Gender.MALE);
+            MainCharacter firstCharacter = new MainCharacter(MyCharacter.Gender.MALE);
 
             Day day = new Day(1);
             Weather weather = new Weather(Weather.Status.WARM_AND_SUNNY);
@@ -32,15 +34,15 @@ public class Main {
             day.goNextDay();
             weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
             firstCharacter.setName("Pool");
-            firstCharacter.setMood(Character.Mood.NOT_AFRAID);
+            firstCharacter.setMood(MyCharacter.Mood.NOT_AFRAID);
             firstCharacter.showMood();
 
             Bees bees = new Bees();
             firstCharacter.think(true, bees, weather);
-            firstCharacter.setMood(Character.Mood.SAD);
+            firstCharacter.setMood(MyCharacter.Mood.SAD);
             firstCharacter.showMood();
 
-            MainCharacter secondCharacter = new MainCharacter("Piglet", Character.Gender.MALE);
+            MainCharacter secondCharacter = new MainCharacter("Piglet", MyCharacter.Gender.MALE);
             firstCharacter.move(secondCharacter);
             firstCharacter.tell(secondCharacter);
             secondCharacter.think(false, new Bees(), weather);
@@ -49,7 +51,7 @@ public class Main {
             People people = new People(forest);
             secondCharacter.think(true, people, weather);
 
-            MainCharacter thirdCharacter = new MainCharacter("Rabbit", Character.Gender.MALE);
+            MainCharacter thirdCharacter = new MainCharacter("Rabbit", MyCharacter.Gender.MALE);
             House houseRabbit = new House(thirdCharacter);
             thirdCharacter.setLocation(houseRabbit);
             firstCharacter.move(houseRabbit);

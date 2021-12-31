@@ -1,16 +1,11 @@
 package Characters;
 
-import Characters.Interfaces.Move;
-import Characters.Interfaces.Talk;
-import Characters.Interfaces.Think;
-import Characters.OtherCharacters.Bees;
-import Characters.OtherCharacters.People;
-import Environment.Places.Place;
-import Environment.Places.UnknownPlace;
+import Characters.Interfaces.*;
+import Characters.OtherCharacters.*;
+import Environment.Places.*;
 import Environment.Weather;
-import org.jetbrains.annotations.NotNull;
 
-public abstract class Character implements Move, Talk,Think {
+public abstract class MyCharacter implements Talk, Think {
 
     /**
      * All the genders of Characters
@@ -28,20 +23,28 @@ public abstract class Character implements Move, Talk,Think {
      * All the moods of Characters
      */
     public enum Mood {
+        HAPPY,
         VERY_HAPPY,
         NOT_AFRAID,
         SAD,
         COLD_AND_SAD,
         UNKNOWN;
+
+        private String reason;
+
+        public String getReason() {
+            return reason;
+        }
+
         public String toString() {
-            return super.toString().toLowerCase();
+            return super.toString().replace('_',' ').toLowerCase();
         }
     }
 
-    /** Shows the name of Character
+    /** Shows the name of MyCharacter
      */
     protected String name;
-    /** Shows the gender of Character
+    /** Shows the gender of MyCharacter
      */
     protected Gender gender;
     /** Shows the mood of character
@@ -57,7 +60,7 @@ public abstract class Character implements Move, Talk,Think {
     /**
      * Build an unknown object which name is "Someone", gender is {@link Gender}.UNKNOWN, location is {@link UnknownPlace}
      */
-    public Character() {
+    public MyCharacter() {
         this.name = "Someone";
         this.gender = Gender.UNKNOWN;
         this.location = new UnknownPlace();
@@ -67,7 +70,7 @@ public abstract class Character implements Move, Talk,Think {
      * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its name
      * @param name Set the name of this object
      */
-    public Character(String name) {
+    public MyCharacter(String name) {
         this.name = name;
         this.gender = Gender.UNKNOWN;
         this.location = new UnknownPlace();
@@ -77,7 +80,7 @@ public abstract class Character implements Move, Talk,Think {
      * Build an object which gender is {@link Gender}.UNKNOWN, location is new {@link UnknownPlace} and set its gender
      * @param gender Set the gender of this object
      */
-    public Character(Gender gender) {
+    public MyCharacter(Gender gender) {
         if(gender.equals(Gender.FEMALE)) {
             this.name = "She";
         }
@@ -93,80 +96,10 @@ public abstract class Character implements Move, Talk,Think {
      * @param name Set the name of this object
      * @param gender Set the gender of this object
      */
-    public Character(String name, Gender gender) {
+    public MyCharacter(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
         this.location = new UnknownPlace();
-    }
-
-    /**
-     * Walk around
-     */
-    @Override
-    public void move() {
-        System.out.println(this.name + " walk around.");
-    }
-
-    /**
-     * Walk around and check if time was wasted
-     * @param isTimeWasted Judge if the time was wasted
-     */
-    @Override
-    public void move(boolean isTimeWasted) {
-        if(isTimeWasted) {
-            System.out.println(this.name + " walk around.");
-        }
-        else System.out.println(this.name + " walk around without wasting any time.");
-    }
-
-    /**
-     * Move to the destination
-     * @param destination Set the destination of this movement
-     */
-    @Override
-    public void move(Place destination) {
-        this.destination = destination;
-        System.out.println(this.name + " moves to " + this.destination.toString() + ".");
-    }
-
-    /**
-     * Move to the destination and check if time was wasted
-     * @param destination Set the destination of this movement
-     * @param isTimeWasted Judge if time was wasted
-     */
-    @Override
-    public void move(Place destination, boolean isTimeWasted) {
-        this.destination = destination;
-        if(isTimeWasted) {
-            System.out.println(this.name + " moves to " + this.destination.toString() + ".");
-        }
-        else {
-            System.out.println(this.name + " moves to " + this.destination.toString() + "without wasting any time.");
-        }
-    }
-
-    /**
-     * Move to the location of other character
-     * @param character Set the destination
-     */
-    @Override
-    public void move(Character character) {
-        this.destination = character.location;
-        System.out.println(this.name + " go to place " + character.name + ".");
-    }
-
-    /**
-     * Move to the location of other character and check if time was wasted
-     * @param character Set the destination
-     * @param isTimeWasted Judge if time was wasted
-     */
-    @Override
-    public void move(Character character, boolean isTimeWasted) {
-        this.destination = character.location;
-        if(isTimeWasted) {
-            System.out.println(this.name + " go to place " + character.name + ".");
-        }
-        else System.out.println(this.name + " go to place " + character.name + " without wasting any time. ");
     }
 
     /**
@@ -180,31 +113,31 @@ public abstract class Character implements Move, Talk,Think {
 
     /**
      * Say to who about something unknown
-     * @param character The target of this conversation
+     * @param myCharacter The target of this conversation
      */
     @Override
-    public void tell(@org.jetbrains.annotations.NotNull Character character) {
-        System.out.println(this.name + " tells " + character.name + " about this." );
+    public void tell(MyCharacter myCharacter) {
+        System.out.println(this.name + " tells " + myCharacter.name + " about this." );
     }
 
     /**
      * Talk something to who
-     * @param character The target of this conversation
+     * @param myCharacter The target of this conversation
      * @param words The words which was said
      */
     @Override
-    public void say(@NotNull Character character, String words) {
-        System.out.println(this.name + " tells " + character.name + ':' + '"' + words + '"');
+    public void say(MyCharacter myCharacter, String words) {
+        System.out.println(this.name + " tells " + myCharacter.name + ':' + '"' + words + '"');
     }
 
     /**
      * Ask someone something
-     * @param character The target of this question
+     * @param myCharacter The target of this question
      * @param words The words which was asked
      */
     @Override
-    public void ask(Character character, String words) {
-        System.out.println(this.name + " asks " + character.name + ':' + '"' + words + '"');
+    public void ask(MyCharacter myCharacter, String words) {
+        System.out.println(this.name + " asks " + myCharacter.name + ':' + '"' + words + '"');
     }
 
     @Override
@@ -255,6 +188,11 @@ public abstract class Character implements Move, Talk,Think {
         this.mood = mood;
     }
 
+    public void setMood(Mood mood, String reason) {
+        this.mood = mood;
+        this.mood.reason = reason;
+    }
+
     public void showMood() {
         System.out.println(this.name + " feels " + this.mood.toString().replace('_', ' ').toLowerCase());
     }
@@ -279,7 +217,7 @@ public abstract class Character implements Move, Talk,Think {
             return false;
         }
 
-        Character sub = (Character) obj;
+        MyCharacter sub = (MyCharacter) obj;
         return this.name.equals(sub.name) && this.gender.equals(sub.gender);
     }
 

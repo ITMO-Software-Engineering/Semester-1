@@ -1,6 +1,5 @@
 package Characters.OtherCharacters;
 
-import Characters.Character;
 import Environment.Places.*;
 import Environment.Weather;
 

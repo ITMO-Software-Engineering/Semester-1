@@ -1,11 +1,10 @@
 package Environment.Places;
 
-import Characters.Character;
-import Characters.MainCharacters.MainCharacter;
+import Characters.MyCharacter;
 
 public class House extends Place {
 
-    Character owner;
+    MyCharacter owner;
 
     public House() {
         this.owner = null;
@@ -13,7 +12,7 @@ public class House extends Place {
         System.out.println("There is a place called " + this.placeName + ".");
     }
 
-    public House(Character owner) {
+    public House(MyCharacter owner) {
         this.owner = owner;
         this.placeName = this.owner.getName() + "'s House";
         System.out.println("There is a place called " + this.placeName + ".");
