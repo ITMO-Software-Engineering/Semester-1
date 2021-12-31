@@ -14,10 +14,11 @@ public class Main {
     public static void main(String[] args) {
 
         {//part1
-            Character smallThing = new Character("Small Things") {
+            Piglet piglet = new Piglet();
 
-            };
-            System.out.println(smallThing.getName());
+            WinnieThePooh winnieThePooh = new WinnieThePooh();
+
+            Rabbit rabbit = new Rabbit();
 
         }
 
@@ -41,7 +42,7 @@ public class Main {
 
             MainCharacter secondCharacter = new MainCharacter("Piglet", Character.Gender.MALE);
             firstCharacter.move(secondCharacter);
-            firstCharacter.say(secondCharacter);
+            firstCharacter.tell(secondCharacter);
             secondCharacter.think(false, new Bees(), weather);
             Forest forest = new Forest();
             //Forest.Jungle jungle = forest.new Jungle();
