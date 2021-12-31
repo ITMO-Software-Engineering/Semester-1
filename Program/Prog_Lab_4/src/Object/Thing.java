@@ -12,9 +12,19 @@ public class Thing {
 
     public Thing() {
         this.theThing = "something";
+        this.state = State.UNKNOWN;
+    }
+    public Thing(State state) {
+        this.theThing = "something";
+        this.state = state;
     }
     public Thing(String theThing) {
         this.theThing = theThing;
+        this.state = State.UNKNOWN;
+    }
+    public Thing(String theThing, State state) {
+        this.theThing = theThing;
+        this.state = state;
     }
 
     public enum State {
@@ -28,7 +38,9 @@ public class Thing {
     }
 
     public void takePartIn(MyCharacter myCharacter) {
-        System.out.println(myCharacter.getName());
+        participants[numParticipants] = myCharacter;
+        numParticipants++;
+        System.out.println(myCharacter.getName() + "takes part in" + this.theThing + );
     }
 
     public void getWorse() {
