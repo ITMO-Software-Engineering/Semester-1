@@ -1,15 +1,16 @@
 package Characters;
 
 import Characters.Interfaces.Move;
-import Characters.Interfaces.Say;
+import Characters.Interfaces.Talk;
 import Characters.Interfaces.Think;
 import Characters.OtherCharacters.Bees;
 import Characters.OtherCharacters.People;
 import Environment.Places.Place;
 import Environment.Places.UnknownPlace;
 import Environment.Weather;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class Character implements Move,Say,Think {
+public abstract class Character implements Move, Talk,Think {
 
     /**
      * All the genders of Characters
@@ -169,14 +170,6 @@ public abstract class Character implements Move,Say,Think {
     }
 
     /**
-     * Self talking of something unknown
-     */
-    @Override
-    public void say() {
-        System.out.println(this.name + "talk something to himself");
-    }
-
-    /**
      * Say something
      * @param words The words which was said
      */
@@ -186,22 +179,32 @@ public abstract class Character implements Move,Say,Think {
     }
 
     /**
-     * Say something unknown to who
+     * Say to who about something unknown
      * @param character The target of this conversation
      */
     @Override
-    public void say(Character character) {
+    public void tell(@org.jetbrains.annotations.NotNull Character character) {
         System.out.println(this.name + " tells " + character.name + " about this." );
     }
 
     /**
-     * Say something to who
+     * Talk something to who
      * @param character The target of this conversation
      * @param words The words which was said
      */
     @Override
-    public void say(Character character, String words) {
+    public void say(@NotNull Character character, String words) {
         System.out.println(this.name + " tells " + character.name + ':' + '"' + words + '"');
+    }
+
+    /**
+     * Ask someone something
+     * @param character The target of this question
+     * @param words The words which was asked
+     */
+    @Override
+    public void ask(Character character, String words) {
+        System.out.println(this.name + " asks " + character.name + ':' + '"' + words + '"');
     }
 
     @Override
