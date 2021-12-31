@@ -11,10 +11,10 @@ public class WinnieThePooh extends MainCharacter {
     }
     public WinnieThePooh(Gender gender) {
         super(gender);
-        System.out.println("There is a " + this.gender.toString() + " character.");
+        System.out.println("There is a " + this.getGender().toString() + " character.");
     }
     public WinnieThePooh(String name, Gender gender) {
         super(name, gender);
-        System.out.println("There is a " + this.gender.toString() + " character called " + this.getName() + ".");
+        System.out.println("There is a " + this.getGender().toString() + " character called " + this.getName() + ".");
     }
 }

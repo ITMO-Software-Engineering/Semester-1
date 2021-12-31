@@ -16,11 +16,6 @@ public class Main {
         {//part1
             Piglet piglet = new Piglet();
             piglet.setMood(MyCharacter.Mood.HAPPY, "No Reason");
-            System.out.println(piglet.getMood().toString() + piglet.getMood().getReason());
-
-            WinnieThePooh winnieThePooh = new WinnieThePooh();
-
-            Rabbit rabbit = new Rabbit();
 
         }
 

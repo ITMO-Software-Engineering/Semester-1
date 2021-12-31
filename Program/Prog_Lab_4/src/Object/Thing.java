@@ -30,7 +30,11 @@ public class Thing {
     public enum State {
         GOOD,
         BAD,
-        UNKNOWN
+        UNKNOWN;
+
+        public String toString() {
+            return super.toString().toLowerCase();
+        }
     }
 
     public void setState(State state) {
@@ -40,11 +44,12 @@ public class Thing {
     public void takePartIn(MyCharacter myCharacter) {
         participants[numParticipants] = myCharacter;
         numParticipants++;
-        System.out.println(myCharacter.getName() + "takes part in" + this.theThing + );
+        System.out.println(myCharacter.getName() + " takes part in " + this.theThing + " " + this.state);
     }
 
     public void getWorse() {
-
+        this.state = State.BAD;
+        System.out.println(this.theThing + " gets worse.");
     }
 
     public MyCharacter[] getParticipants() {
