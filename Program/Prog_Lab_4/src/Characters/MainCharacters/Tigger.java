@@ -1,6 +1,5 @@
 package Characters.MainCharacters;
 
-import Characters.Character;
 import Environment.Weather;
 
 public class Tigger extends MainCharacter {

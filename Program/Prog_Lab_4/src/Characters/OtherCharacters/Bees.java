@@ -1,6 +1,5 @@
 package Characters.OtherCharacters;
 
-import Characters.Character;
 import Environment.Weather;
 
 public class Bees extends OtherCharacter {

@@ -1,6 +1,6 @@
 package Characters.OtherCharacters;
 
-import Characters.Character;
+import Characters.MyCharacter;
 
-public class OtherCharacter extends Character {
+public class OtherCharacter extends MyCharacter {
 }

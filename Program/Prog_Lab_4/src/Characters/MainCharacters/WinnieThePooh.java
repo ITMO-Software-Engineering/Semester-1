@@ -1,7 +1,5 @@
 package Characters.MainCharacters;
 
-import Characters.Character;
-
 public class WinnieThePooh extends MainCharacter {
     public WinnieThePooh() {
         super("Winnie The Pooh");
