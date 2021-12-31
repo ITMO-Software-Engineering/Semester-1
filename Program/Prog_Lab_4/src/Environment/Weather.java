@@ -3,15 +3,6 @@ package Environment;
 public class Weather {
     public Status status;
 
-    public Weather() {
-        this.status = Status.UNKNOWN;
-    }
-
-    public Weather(Status status) {
-        this.status = status;
-        System.out.println("The weather is " + status.toString() + ".");
-    }
-
     public enum Status {
         WARM_AND_SUNNY,
         COLD_AND_FOGGY,
@@ -20,6 +11,15 @@ public class Weather {
         public String toString() {
             return super.toString().replace('_',' ').toLowerCase();
         }
+    }
+
+    public Weather() {
+        this.status = Status.UNKNOWN;
+    }
+
+    public Weather(Status status) {
+        this.status = status;
+        System.out.println("The weather is " + status.toString() + ".");
     }
 
     public void changeStatus(Status newStatus) {
@@ -37,7 +37,26 @@ public class Weather {
         return this.status.equals(Status.COLD_AND_FOGGY);
     }
 
-    public Status getWeather() {
+    public Status getStatus() {
         return this.status;
+    }
+
+    public class Fog {
+
+        private int stage;
+
+        public Fog() {
+            this.stage = 1;
+            System.out.println("It's getting foggy");
+        }
+
+        public void gettingThicker() {
+            this.stage++;
+            System.out.println("The fog is getting thicker");
+        }
+
+        public int getStage() {
+            return this.stage;
+        }
     }
 }
