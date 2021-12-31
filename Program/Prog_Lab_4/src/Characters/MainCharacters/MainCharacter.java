@@ -23,6 +23,10 @@ public class MainCharacter extends MyCharacter implements Move {
         System.out.println("There is a " + this.gender.toString() + " character called " + this.getName() + ".");
     }
 
+    public void goCamping() {
+
+    }
+
     /**
      * Walk around
      */

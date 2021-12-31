@@ -17,4 +17,8 @@ public class Rabbit extends MainCharacter {
         super(name, gender);
         System.out.println("There is a " + this.gender.toString() + " character called " + this.getName() + ".");
     }
+
+    public void coverMouthWithClaw() {
+
+    }
 }

@@ -1,11 +1,31 @@
 package Object;
 
 import Characters.MyCharacter;
+import Environment.Weather;
 
 public class Thing {
 
-    MyCharacter[] participants = new MyCharacter[7];
+    private MyCharacter[] participants = new MyCharacter[7];
     private int numParticipants = 0;
+    private String theThing;
+    private State state;
+
+    public Thing() {
+        this.theThing = "something";
+        this.state = State.UNKNOWN;
+    }
+    public Thing(State state) {
+        this.theThing = "something";
+        this.state = state;
+    }
+    public Thing(String theThing) {
+        this.theThing = theThing;
+        this.state = State.UNKNOWN;
+    }
+    public Thing(String theThing, State state) {
+        this.theThing = theThing;
+        this.state = state;
+    }
 
     public enum State {
         GOOD,
@@ -13,8 +33,14 @@ public class Thing {
         UNKNOWN
     }
 
+    public void setState(State state) {
+        this.state = state;
+    }
+
     public void takePartIn(MyCharacter myCharacter) {
-        System.out.println(myCharacter.getName());
+        participants[numParticipants] = myCharacter;
+        numParticipants++;
+        System.out.println(myCharacter.getName() + "takes part in" + this.theThing + );
     }
 
     public void getWorse() {
