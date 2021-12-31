@@ -1,10 +1,13 @@
 package Characters.MainCharacters;
 
+import Characters.Interfaces.Believe;
+import Characters.Interfaces.Event;
 import Characters.Interfaces.Move;
 import Characters.MyCharacter;
 import Environment.Places.Place;
+import Object.Thing;
 
-public class MainCharacter extends MyCharacter implements Move {
+public class MainCharacter extends MyCharacter implements Move, Believe, Event {
 
     public MainCharacter() {
         super();
@@ -103,6 +106,18 @@ public class MainCharacter extends MyCharacter implements Move {
             System.out.print(mainChar.getName() + " ");
         }
         System.out.print("escape.\n");
+    }
+
+    @Override
+    public void believe() {
+        System.out.print(this.getName() + " believes that: ");
+    }
+
+    @Override
+    public void willTakePartIn(Thing event) {
+        event.getParticipants()[event.getNumParticipants()] = this;
+        event.increaseNumParticipants(1);
+        System.out.println(this.getName() + " will take part in " + event.getName() + " " + event.getState());
     }
 
     public void setLocation(Place location) {

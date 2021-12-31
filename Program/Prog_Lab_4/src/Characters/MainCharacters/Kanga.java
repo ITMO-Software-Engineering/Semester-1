@@ -2,7 +2,7 @@ package Characters.MainCharacters;
 
 public class Kanga extends MainCharacter {
     public Kanga() {
-        super("Piglet");
+        super("Kanga");
     }
     public Kanga(String name) {
         super(name);

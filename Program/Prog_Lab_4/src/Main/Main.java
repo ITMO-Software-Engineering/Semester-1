@@ -5,6 +5,7 @@ import Characters.MainCharacters.*;
 import Characters.OtherCharacters.*;
 import Environment.*;
 import Environment.Places.*;
+import Object.*;
 
 /**<p>Project name: Prog_Lab_4 </p>
  * @author <a href="https://github.com/Tolia-GH">Tolia</a>
@@ -13,13 +14,48 @@ public class Main {
 
     public static void main(String[] args) {
 
-        {//part1
-            Piglet piglet = new Piglet();
-            piglet.setMood(MyCharacter.Mood.HAPPY, "No Reason");
 
+        System.out.println("Introducing characters:\n");
+        WinnieThePooh winnieThePooh = new WinnieThePooh();
+        Piglet piglet = new Piglet();
+        Rabbit rabbit = new Rabbit();
+        Tigger tigger = new Tigger();
+        Kanga kanga = new Kanga();
+        Roo roo = new Roo();
+        System.out.println();
+
+
+        {//Scene 1
+            System.out.println("Scene 1:\n");
+            piglet.setMood(MyCharacter.Mood.VERY_HAPPY);
+            piglet.showMood();
+
+            Thing aGoodThing = new Thing(Thing.State.GOOD);
+            piglet.believe(); aGoodThing.didBy(piglet);
+
+
+            winnieThePooh.willTakePartIn(aGoodThing);
+            rabbit.willTakePartIn(aGoodThing);
+            aGoodThing.showParticipants();
+
+            if(aGoodThing.checkParticipant(winnieThePooh) && aGoodThing.checkParticipant(rabbit)) {
+                MainCharacter littleThings = new MainCharacter("little animals") {
+                    @Override
+                    public void willTakePartIn(Thing event) {
+                        event.getParticipants()[event.getNumParticipants()] = this;
+                        event.increaseNumParticipants(1);
+                        System.out.println("If " + rabbit.getName() + " and " + winnieThePooh.getName() + " will take part in " + aGoodThing.getName());
+                        System.out.println(this.getName() + " can also take part in " + event.getName() + " " + event.getState());
+                    }
+                };
+                littleThings.willTakePartIn(aGoodThing);
+            }
+
+            System.out.println();
         }
 
-        {//part 2
+        {//Scene 2
+            System.out.println("Scene 2:\n");
             MainCharacter firstCharacter = new MainCharacter(MyCharacter.Gender.MALE);
 
             Day day = new Day(1);
@@ -56,7 +92,6 @@ public class Main {
 
             houseRabbit.meetMember();
             houseRabbit.showMember();
-            Tigger tigger = new Tigger();
 
             thirdCharacter.say("Today is the best day for adventure!");
             thirdCharacter.say("Because " + tigger.jumpForward(weather));

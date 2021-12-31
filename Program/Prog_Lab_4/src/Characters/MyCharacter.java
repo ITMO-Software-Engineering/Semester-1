@@ -194,6 +194,7 @@ public abstract class MyCharacter implements Talk, Think {
 
     public void setMood(Mood mood) {
         this.mood = mood;
+        this.mood.setReason("no reason");
     }
 
     public void setMood(Mood mood, String reason) {

@@ -1,31 +1,9 @@
 package Object;
 
+import Characters.MainCharacters.MainCharacter;
 import Characters.MyCharacter;
-import Environment.Weather;
 
 public class Thing {
-
-    private MyCharacter[] participants = new MyCharacter[7];
-    private int numParticipants = 0;
-    private String theThing;
-    private State state;
-
-    public Thing() {
-        this.theThing = "something";
-        this.state = State.UNKNOWN;
-    }
-    public Thing(State state) {
-        this.theThing = "something";
-        this.state = state;
-    }
-    public Thing(String theThing) {
-        this.theThing = theThing;
-        this.state = State.UNKNOWN;
-    }
-    public Thing(String theThing, State state) {
-        this.theThing = theThing;
-        this.state = state;
-    }
 
     public enum State {
         GOOD,
@@ -37,19 +15,86 @@ public class Thing {
         }
     }
 
+    private String name;
+    private State state;
+    private MyCharacter[] participants = new MainCharacter[7];
+    private int numParticipants = 0;
+
+    public Thing() {
+        this.name = "something";
+        this.state = State.UNKNOWN;
+    }
+    public Thing(State state) {
+        this.name = "something";
+        this.state = state;
+    }
+    public Thing(String name) {
+        this.name = name;
+        this.state = State.UNKNOWN;
+    }
+    public Thing(String name, State state) {
+        this.name = name;
+        this.state = state;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setState(State state) {
         this.state = state;
     }
 
-    public void takePartIn(MyCharacter myCharacter) {
-        participants[numParticipants] = myCharacter;
+    public void didBy(MainCharacter character) {
+        this.participants[numParticipants] = character;
         numParticipants++;
-        System.out.println(myCharacter.getName() + " takes part in " + this.theThing + " " + this.state);
+        System.out.print(character.getName() + " did " + this.name + " " + this.state + ".\n");
+    }
+
+    public void takePartIn(MyCharacter character) {
+        participants[numParticipants] = character;
+        numParticipants++;
+        System.out.println(character.getName() + " takes part in " + this.name + " " + this.state);
     }
 
     public void getWorse() {
         this.state = State.BAD;
-        System.out.println(this.theThing + " gets worse.");
+        System.out.println(this.name + " gets worse.");
+    }
+
+    public void increaseNumParticipants(int num) {
+        this.numParticipants += num;
+    }
+
+    public void showParticipants() {
+        System.out.print("Now participants of " + this.name + " are: ");
+        for(MyCharacter ch : participants) {
+            if(ch == null) {
+                continue;
+            }
+            System.out.print(ch.getName() + ", ");
+        }
+        System.out.print(".\n");
+    }
+
+    public boolean checkParticipant(MyCharacter character) {
+        for(MyCharacter mainCh : participants) {
+            if(mainCh == null) {
+                break;
+            }
+            if(mainCh.equals(character)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public State getState() {
+        return this.state;
     }
 
     public MyCharacter[] getParticipants() {
@@ -59,4 +104,5 @@ public class Thing {
     public int getNumParticipants() {
         return numParticipants;
     }
+
 }
