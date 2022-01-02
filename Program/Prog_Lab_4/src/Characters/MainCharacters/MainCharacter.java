@@ -114,6 +114,13 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
     }
 
     @Override
+    public void doThing(Thing event) {
+        event.getParticipants()[event.getNumParticipants()] = this;
+        event.increaseNumParticipants(1);
+        System.out.print(this.getName() + " did " + event.getName() + " " + event.getState() + ".\n");
+    }
+
+    @Override
     public void willTakePartIn(Thing event) {
         event.getParticipants()[event.getNumParticipants()] = this;
         event.increaseNumParticipants(1);
@@ -123,5 +130,9 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
     public void setLocation(Place location) {
         super.setLocation(location);
         this.location.setMember(this);
+    }
+
+    public void sleep() {
+        System.out.println(this.getName() + "has a good sleep.");
     }
 }

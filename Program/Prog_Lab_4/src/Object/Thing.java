@@ -45,18 +45,6 @@ public class Thing {
         this.state = state;
     }
 
-    public void didBy(MainCharacter character) {
-        this.participants[numParticipants] = character;
-        numParticipants++;
-        System.out.print(character.getName() + " did " + this.name + " " + this.state + ".\n");
-    }
-
-    public void takePartIn(MyCharacter character) {
-        participants[numParticipants] = character;
-        numParticipants++;
-        System.out.println(character.getName() + " takes part in " + this.name + " " + this.state);
-    }
-
     public void getWorse() {
         this.state = State.BAD;
         System.out.println(this.name + " gets worse.");

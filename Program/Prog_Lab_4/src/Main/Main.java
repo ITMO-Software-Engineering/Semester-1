@@ -31,7 +31,7 @@ public class Main {
             piglet.showMood();
 
             Thing aGoodThing = new Thing(Thing.State.GOOD);
-            piglet.believe(); aGoodThing.didBy(piglet);
+            piglet.believe(); piglet.doThing(aGoodThing);
 
 
             winnieThePooh.willTakePartIn(aGoodThing);
@@ -39,16 +39,22 @@ public class Main {
             aGoodThing.showParticipants();
 
             if(aGoodThing.checkParticipant(winnieThePooh) && aGoodThing.checkParticipant(rabbit)) {
-                MainCharacter littleThings = new MainCharacter("little animals") {
+                System.out.println("If " + rabbit.getName() + " and " + winnieThePooh.getName() + " will take part in " + aGoodThing.getName());
+                MainCharacter littleThings = new MainCharacter("Little animals") {
                     @Override
                     public void willTakePartIn(Thing event) {
                         event.getParticipants()[event.getNumParticipants()] = this;
                         event.increaseNumParticipants(1);
-                        System.out.println("If " + rabbit.getName() + " and " + winnieThePooh.getName() + " will take part in " + aGoodThing.getName());
                         System.out.println(this.getName() + " can also take part in " + event.getName() + " " + event.getState());
+                    }
+
+                    public void sleep() {
+                        System.out.println(this.getName() + " has a good sleep.");
                     }
                 };
                 littleThings.willTakePartIn(aGoodThing);
+                System.out.print("Then ");
+                littleThings.sleep();
             }
 
             System.out.println();

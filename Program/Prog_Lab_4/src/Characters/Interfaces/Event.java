@@ -1,6 +1,7 @@
 package Characters.Interfaces;
 
+import Object.*;
 public interface Event {
-    void doThing();
-    void willTakePartIn();
+    void doThing(Thing event);
+    void willTakePartIn(Thing event);
 }
