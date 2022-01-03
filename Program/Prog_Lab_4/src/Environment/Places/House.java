@@ -13,13 +13,11 @@ public class House extends Place {
     public House() {
         this.owner = null;
         this.placeName = "a House";
-        System.out.println("There is a house.");
     }
 
     public House(MainCharacter owner) {
         this.owner = owner;
         this.placeName = this.owner.getName() + "'s House";
-        System.out.println("There is a house where " + this.owner + " lives.");
     }
 
     public void setNeighbors(MainCharacter[] neighbors) {
@@ -33,7 +31,19 @@ public class House extends Place {
     public void addNeighbor(MainCharacter neighbor) {
         this.neighbors[numNeighbors] = neighbor;
         this.numNeighbors ++;
-        neighbor.getHouse().addNeighbor(this.owner);
+        if(neighbor.equals(this.neighbors[numNeighbors])) {
+            neighbor.getHouse().addNeighbor(this.owner);
+        }
+    }
+
+    public void showNeighbors() {
+        String neighborsList = "";
+        for(MainCharacter mainChar : this.neighbors) {
+            if(mainChar != null) {
+                neighborsList += mainChar.getName() + " ";
+            }
+        }
+        System.out.println(this.owner.getName() + " lives nearby " + neighborsList);
     }
 
     public MainCharacter getOwner() {

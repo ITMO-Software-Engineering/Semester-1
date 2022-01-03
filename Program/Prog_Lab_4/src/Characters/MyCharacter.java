@@ -4,6 +4,9 @@ import Characters.Interfaces.*;
 import Characters.OtherCharacters.*;
 import Environment.Places.*;
 import Environment.Weather;
+import MyExeption.InPutException;
+
+import java.util.Scanner;
 
 public abstract class MyCharacter implements Talk, Think {
 
@@ -111,17 +114,8 @@ public abstract class MyCharacter implements Talk, Think {
      * @param words The words which was said
      */
     @Override
-    public void say(String words) {
+    public void say(String words){
         System.out.println(this.getName() + " says: " + '"' + words + '"');
-    }
-
-    /**
-     * Say to who about something unknown
-     * @param myCharacter The target of this conversation
-     */
-    @Override
-    public void tell(MyCharacter myCharacter) {
-        System.out.println(this.name + " tells " + myCharacter.name + " about this." );
     }
 
     /**
@@ -132,6 +126,20 @@ public abstract class MyCharacter implements Talk, Think {
     @Override
     public void say(MyCharacter myCharacter, String words) {
         System.out.println(this.name + " tells " + myCharacter.name + ':' + '"' + words + '"');
+    }
+
+    @Override
+    public void answer(){
+        System.out.println(this.name + " answers that " + new Scanner(System.in).nextLine());
+    }
+
+    /**
+     * Say to who about something unknown
+     * @param myCharacter The target of this conversation
+     */
+    @Override
+    public void tell(MyCharacter myCharacter) {
+        System.out.println(this.name + " tells " + myCharacter.name + " about this." );
     }
 
     /**
