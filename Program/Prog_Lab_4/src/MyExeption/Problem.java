@@ -6,11 +6,15 @@ public class Problem extends RuntimeException{
 
     private String description;
 
-    Problem() {
-
+    public Problem() {
+        this.setDescription("no description");
     }
 
     public Problem(String description) {
+        this.setDescription(description);
+    }
+
+    public void setDescription(String description) {
         this.description = description;
     }
 

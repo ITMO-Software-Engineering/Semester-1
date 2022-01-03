@@ -5,41 +5,50 @@ import Characters.MainCharacters.*;
 import Characters.OtherCharacters.*;
 import Environment.*;
 import Environment.Places.*;
+import MyExeption.InPutException;
 import MyExeption.Problem;
 import Object.*;
+
+import java.util.Scanner;
 
 /**<p>Project name: Prog_Lab_4 </p>
  * @author <a href="https://github.com/Tolia-GH">Tolia</a>
  */
 public class Main {
 
+
+
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Introducing characters:\n");
-        WinnieThePooh winnieThePooh = new WinnieThePooh();
+
+        WinnieThePooh winnieThePooh = new WinnieThePooh("Winnie");
         Piglet piglet = new Piglet();
         Rabbit rabbit = new Rabbit();
         Tigger tigger = new Tigger();
         Kanga kanga = new Kanga();
         Roo roo = new Roo();
+
         System.out.println();
 
 
-        {//Scene 1
+        {
             System.out.println("Scene 1:\n");
             piglet.setMood(MyCharacter.Mood.VERY_HAPPY);
             piglet.showMood();
 
             Thing aGoodThing = new Thing(Thing.State.GOOD);
-            piglet.believe(); piglet.doThing(aGoodThing);
+            piglet.believe();
+            piglet.doThing(aGoodThing);
 
 
             winnieThePooh.willTakePartIn(aGoodThing);
             rabbit.willTakePartIn(aGoodThing);
             aGoodThing.showParticipants();
 
-            if(aGoodThing.checkParticipant(winnieThePooh) && aGoodThing.checkParticipant(rabbit)) {
+            if (aGoodThing.checkParticipant(winnieThePooh) && aGoodThing.checkParticipant(rabbit)) {
                 MainCharacter littleThings = new MainCharacter("Little animals") {
                     @Override
                     public void willTakePartIn(Thing event) {
@@ -82,57 +91,58 @@ public class Main {
             thingTiggerDonNotKnow.setDescription("which bear is he facing with - the A Yes Bear!");
             thingTiggerDonNotKnow.know(tigger);
 
-            rabbit.getHouse().setNeighbors(new MainCharacter[]{kanga, roo, tigger});
+            rabbit.getHouse().addNeighbor(kanga);
+            rabbit.getHouse().addNeighbor(roo);
+            rabbit.getHouse().addNeighbor(tigger);
+            rabbit.getHouse().showNeighbors();
+
+            rabbit.ask(tigger, "What will you do tomorrow? " +
+                    "If you do nothing, what about have a walk with "
+                    + winnieThePooh.getName() + " " + piglet.getName());
+
+            tigger.answer();
 
             System.out.println();
         }
 
-        {//Scene 2
-            System.out.println("Scene 2:\n");
-            MainCharacter firstCharacter = new MainCharacter(MyCharacter.Gender.MALE);
+        System.out.println("Scene 2:\n");
 
-            Day day = new Day(1);
-            Weather weather = new Weather(Weather.Status.WARM_AND_SUNNY);
-            firstCharacter.move(false);
+        Day day = new Day(1);
+        Weather weather = new Weather(Weather.Status.WARM_AND_SUNNY);
+        winnieThePooh.move(false);
 
-            day.goNextDay();
-            weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
-            firstCharacter.setName("Pool");
-            firstCharacter.setMood(MyCharacter.Mood.NOT_AFRAID);
-            firstCharacter.showMood();
+        day.goNextDay();
+        weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
+        winnieThePooh.setMood(MyCharacter.Mood.NOT_AFRAID);
+        winnieThePooh.showMood();
 
-            Bees bees = new Bees();
-            firstCharacter.think(true, bees, weather);
-            firstCharacter.setMood(MyCharacter.Mood.SAD);
-            firstCharacter.showMood();
+        Bees bees = new Bees();
+        winnieThePooh.think(true, bees, weather);
 
-            MainCharacter secondCharacter = new MainCharacter("Piglet", MyCharacter.Gender.MALE);
-            firstCharacter.move(secondCharacter);
-            firstCharacter.tell(secondCharacter);
-            secondCharacter.think(false, new Bees(), weather);
-            Forest forest = new Forest();
-            //Forest.Jungle jungle = forest.new Jungle();
-            People people = new People(forest);
-            secondCharacter.think(true, people, weather);
+        winnieThePooh.setMood(MyCharacter.Mood.SAD);
+        winnieThePooh.showMood();
 
-            MainCharacter thirdCharacter = new MainCharacter("Rabbit", MyCharacter.Gender.MALE);
-            House houseRabbit = new House(thirdCharacter);
-            thirdCharacter.setLocation(houseRabbit);
-            firstCharacter.move(houseRabbit);
-            secondCharacter.move(houseRabbit);
-            houseRabbit.arriveMember(firstCharacter);
-            houseRabbit.arriveMember(secondCharacter);
+        winnieThePooh.move(piglet);
+        winnieThePooh.tell(piglet);
+        piglet.think(false, new Bees(), weather);
+        Forest forest = new Forest();
+        //Forest.Jungle jungle = forest.new Jungle();
+        People people = new People(forest);
+        piglet.think(true, people, weather);
 
-            houseRabbit.meetMember();
-            houseRabbit.showMember();
+        House houseRabbit = new House(rabbit);
+        rabbit.setLocation(houseRabbit);
+        winnieThePooh.move(houseRabbit);
+        piglet.move(houseRabbit);
+        houseRabbit.arriveMember(winnieThePooh);
+        houseRabbit.arriveMember(piglet);
 
-            thirdCharacter.say("Today is the best day for adventure!");
-            thirdCharacter.say("Because " + tigger.jumpForward(weather));
-            thirdCharacter.say("As soon as he is out of sight, they will all run away and he will never see them again.");
-        }
+        houseRabbit.meetMember();
+        houseRabbit.showMember();
 
-        {//part3
+        rabbit.say("Today is the best day for adventure!");
+        rabbit.say("Because " + tigger.jumpForward(weather));
+        rabbit.say("As soon as he is out of sight, they will all run away and he will never see them again.");
 
-        }
     }
 }

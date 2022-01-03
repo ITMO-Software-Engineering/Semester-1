@@ -37,6 +37,10 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
         System.out.println("There is a " + this.getGender().toString() + " character called " + this.getName() + ".");
     }
 
+    public static void introduce() {
+        System.out.println("Introducing characters");
+    }
+
     public void goCamping() {
         System.out.println(this.getName());
     }
