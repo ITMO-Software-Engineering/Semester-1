@@ -16,6 +16,7 @@ public class Thing {
     }
 
     private String name;
+    private String description;
     private State state;
     private MyCharacter[] participants = new MainCharacter[7];
     private int numParticipants = 0;
@@ -37,6 +38,10 @@ public class Thing {
         this.state = state;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -48,6 +53,11 @@ public class Thing {
     public void getWorse() {
         this.state = State.BAD;
         System.out.println(this.name + " gets worse.");
+    }
+
+    public void know(MainCharacter character) {
+        System.out.println(character.getName() + " will know " + this.getName());
+        System.out.println("That is: " + this.getDescription());
     }
 
     public void increaseNumParticipants(int num) {
@@ -79,6 +89,10 @@ public class Thing {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public State getState() {

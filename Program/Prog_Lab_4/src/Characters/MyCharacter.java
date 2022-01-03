@@ -50,7 +50,7 @@ public abstract class MyCharacter implements Talk, Think {
     private String name;
     /** Shows the gender of MyCharacter
      */
-    private Gender gender;
+    private final Gender gender;
     /** Shows the mood of character
      */
     protected Mood mood;
@@ -203,7 +203,15 @@ public abstract class MyCharacter implements Talk, Think {
     }
 
     public void showMood() {
-        System.out.println(this.name + " feels " + this.mood.toString().replace('_', ' ').toLowerCase());
+        if(this.mood.reason.equals("no reason")) {
+            System.out.println(this.name + " feels "
+                    + this.mood.toString().replace('_', ' ').toLowerCase());
+        }
+        else {
+            System.out.println(this.name + " feels "
+                    + this.mood.toString().replace('_', ' ').toLowerCase()
+                    + " because " + this.mood.reason);
+        }
     }
 
     public void setLocation(Place location) {

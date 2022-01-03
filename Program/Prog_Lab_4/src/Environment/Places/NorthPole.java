@@ -1,14 +1,18 @@
 package Environment.Places;
 
+import Characters.MainCharacters.MainCharacter;
 import Characters.MyCharacter;
 
 public class NorthPole extends Place{
 
+    public NorthPole() {
+        this.placeName = "The North Pole";
+    }
 
     public class Inscription {
-        private String inscription = "OPENED BY WINNY THE POOH, THE POOH FOUND IT.";
 
         public String getInscription() {
+            String inscription = "OPENED BY WINNY THE POOH, THE POOH FOUND IT.";
             return inscription;
         }
 

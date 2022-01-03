@@ -5,6 +5,7 @@ import Characters.MainCharacters.*;
 import Characters.OtherCharacters.*;
 import Environment.*;
 import Environment.Places.*;
+import MyExeption.Problem;
 import Object.*;
 
 /**<p>Project name: Prog_Lab_4 </p>
@@ -39,7 +40,6 @@ public class Main {
             aGoodThing.showParticipants();
 
             if(aGoodThing.checkParticipant(winnieThePooh) && aGoodThing.checkParticipant(rabbit)) {
-                System.out.println("If " + rabbit.getName() + " and " + winnieThePooh.getName() + " will take part in " + aGoodThing.getName());
                 MainCharacter littleThings = new MainCharacter("Little animals") {
                     @Override
                     public void willTakePartIn(Thing event) {
@@ -52,10 +52,37 @@ public class Main {
                         System.out.println(this.getName() + " has a good sleep.");
                     }
                 };
+
+                System.out.println("If " + rabbit.getName() + " and " + winnieThePooh.getName() + " will take part in " + aGoodThing.getName());
                 littleThings.willTakePartIn(aGoodThing);
                 System.out.print("Then ");
                 littleThings.sleep();
             }
+
+            try {
+                tigger.setLost(true);
+            } catch (Problem problem) {
+                problem.printDescription();
+                problem.toBeSolve(piglet);
+            }
+
+            NorthPole northPole = new NorthPole();
+            winnieThePooh.setMood(MyCharacter.Mood.HAPPY, "he is the first one who finds out " + northPole.placeName);
+            winnieThePooh.showMood();
+
+            northPole.arriveMember(winnieThePooh);
+            northPole.arriveMember(rabbit);
+            northPole.arriveMember(piglet);
+            northPole.arriveMember(tigger);
+
+            NorthPole.Inscription inscription = northPole.new Inscription();
+            inscription.viewInscription(tigger);
+
+            Thing thingTiggerDonNotKnow = new Thing("something " + tigger.getName() + " don't know now.");
+            thingTiggerDonNotKnow.setDescription("which bear is he facing with - the A Yes Bear!");
+            thingTiggerDonNotKnow.know(tigger);
+
+            rabbit.getHouse().setNeighbors(new MainCharacter[]{kanga, roo, tigger});
 
             System.out.println();
         }

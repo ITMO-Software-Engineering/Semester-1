@@ -2,7 +2,7 @@ package Environment.Places;
 
 public class Road extends Place{
 
-    
+
 
     public Road() {
         this.placeName = "Road";

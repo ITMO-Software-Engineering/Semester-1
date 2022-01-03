@@ -5,10 +5,11 @@ import Characters.MyCharacter;
 
 public abstract class Place {
     public String placeName;
-    MainCharacter[] member = new MainCharacter[7];
+    MyCharacter[] member = new MainCharacter[20];
     int numMember = 0;
 
     public Place() {
+        this.placeName = "somewhere";
     }
 
     public Place(String placeName) {
@@ -19,12 +20,18 @@ public abstract class Place {
         member[numMember] = character;
         numMember++;
     }
-    public void arriveMember(MainCharacter character) {
-        System.out.println(character.getName() + " arrives at " + character.destination.toString());
+
+    public void arriveMember(MyCharacter character) {
+        if(character.getDestination() != null) {
+            System.out.println(character.getName() + " arrives at " + character.getDestination().toString());
+            character.location = character.destination;
+            character.destination = null;
+        } else {
+            System.out.println(character.getName() + " arrives at " + this.placeName);
+            character.location = this;
+        }
         member[numMember] = character;
         numMember++;
-        character.location = character.destination;
-        character.destination = null;
     }
 
     public void showMember() {

@@ -4,25 +4,36 @@ import Characters.Interfaces.Believe;
 import Characters.Interfaces.Event;
 import Characters.Interfaces.Move;
 import Characters.MyCharacter;
+import Environment.Places.House;
 import Environment.Places.Place;
 import Object.Thing;
 
 public class MainCharacter extends MyCharacter implements Move, Believe, Event {
 
+    private House house;
+
+    public House getHouse() {
+        return this.house;
+    }
+
     public MainCharacter() {
         super();
+        this.house = new House(this);
         System.out.println("There is a character we know nothing.");
     }
     public MainCharacter(String name) {
         super(name);
+        this.house = new House(this);
         System.out.println("There is a character called " + this.getName() + ".");
     }
     public MainCharacter(Gender gender) {
         super(gender);
+        this.house = new House(this);
         System.out.println("There is a " + this.getGender().toString() + " character.");
     }
     public MainCharacter(String name, Gender gender) {
         super(name, gender);
+        this.house = new House(this);
         System.out.println("There is a " + this.getGender().toString() + " character called " + this.getName() + ".");
     }
 
@@ -134,5 +145,9 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
 
     public void sleep() {
         System.out.println(this.getName() + "has a good sleep.");
+    }
+
+    public void solveProblem() {
+
     }
 }
