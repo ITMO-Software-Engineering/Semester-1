@@ -5,7 +5,7 @@ import Environment.Weather;
 public class Bees extends OtherCharacter {
 
     public Bees() {
-        this.name = "Bees";
+        this.setName("Bees");
     }
 
     public void makeHoney(Weather weather) {

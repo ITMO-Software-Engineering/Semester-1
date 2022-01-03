@@ -11,7 +11,7 @@ public class People extends OtherCharacter {
     }
 
     public People(Place place) {
-        this.name = "people";
+        this.setName("People");
         this.setMood(Mood.UNKNOWN);
         this.location = place;
     }

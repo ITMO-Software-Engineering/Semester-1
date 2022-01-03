@@ -32,6 +32,10 @@ public abstract class MyCharacter implements Talk, Think {
 
         private String reason;
 
+        public void setReason(String reason) {
+            this.reason = reason;
+        }
+
         public String getReason() {
             return reason;
         }
@@ -43,10 +47,10 @@ public abstract class MyCharacter implements Talk, Think {
 
     /** Shows the name of MyCharacter
      */
-    protected String name;
+    private String name;
     /** Shows the gender of MyCharacter
      */
-    protected Gender gender;
+    private final Gender gender;
     /** Shows the mood of character
      */
     protected Mood mood;
@@ -143,9 +147,9 @@ public abstract class MyCharacter implements Talk, Think {
     @Override
     public void think(boolean is, Bees bees, Weather weather) {
         if(is) {
-            System.out.print(this.name + " thinks about " + bees.name);
+            System.out.print(this.name + " thinks about " + bees.getName());
         } else {
-            System.out.print(this.name + " thinks not about " + bees.name);
+            System.out.print(this.name + " thinks not about " + bees.getName());
         }
         bees.makeHoney(weather);
     }
@@ -153,9 +157,9 @@ public abstract class MyCharacter implements Talk, Think {
     @Override
     public void think(boolean is, People people, Weather weather) {
         if(is) {
-            System.out.print(this.name + " thinks about " + people.name);
+            System.out.print(this.name + " thinks about " + people.getName());
         } else {
-            System.out.print(this.name + " thinks not about " + people.name);
+            System.out.print(this.name + " thinks not about " + people.getName());
         }
         people.getLose(weather);
     }
@@ -184,17 +188,30 @@ public abstract class MyCharacter implements Talk, Think {
         return this.destination;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setMood(Mood mood) {
         this.mood = mood;
+        this.mood.setReason("no reason");
     }
 
     public void setMood(Mood mood, String reason) {
         this.mood = mood;
-        this.mood.reason = reason;
+        this.mood.setReason(reason);
     }
 
     public void showMood() {
-        System.out.println(this.name + " feels " + this.mood.toString().replace('_', ' ').toLowerCase());
+        if(this.mood.reason.equals("no reason")) {
+            System.out.println(this.name + " feels "
+                    + this.mood.toString().replace('_', ' ').toLowerCase());
+        }
+        else {
+            System.out.println(this.name + " feels "
+                    + this.mood.toString().replace('_', ' ').toLowerCase()
+                    + " because " + this.mood.reason);
+        }
     }
 
     public void setLocation(Place location) {
