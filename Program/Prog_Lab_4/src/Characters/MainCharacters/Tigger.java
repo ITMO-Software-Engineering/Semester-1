@@ -4,7 +4,6 @@ import Characters.MyCharacter;
 import Environment.Weather;
 import MyExeption.InPutException;
 import MyExeption.Problem;
-import Main.Main;
 
 import java.util.Scanner;
 
@@ -38,12 +37,12 @@ public class Tigger extends MainCharacter {
         }
     }
 
-    public void showUp() {
-        System.out.println(this.getName() + " shows up.");
+    public void showUp(String description) {
+        System.out.println(this.getName() + " shows up " + description);
     }
 
-    public void disappear() {
-        System.out.println(this.getName() + " disappeared.");
+    public void disappear(String description) {
+        System.out.println(this.getName() + " disappeared " + description);
     }
 
     @Override

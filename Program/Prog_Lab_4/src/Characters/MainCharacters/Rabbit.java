@@ -17,4 +17,10 @@ public class Rabbit extends MainCharacter {
     public void coverMouth() {
         System.out.print("Covering mouth with claws, ");
     }
+
+    public void turnAroundAndPush(MainCharacter character) {
+        System.out.println(this.getName() + " turns around and push " + character.getName());
+    }
+
+
 }

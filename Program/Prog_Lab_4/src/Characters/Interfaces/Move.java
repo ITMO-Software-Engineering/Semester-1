@@ -27,6 +27,12 @@ public interface Move {
             System.out.print(mainChar.getName() + " ");
         }
         System.out.print("walk side by side.\n");
+    }
 
+    static void chaseUp(MainCharacter[] mainCharacters) {
+        for (MainCharacter mainChar: mainCharacters) {
+            System.out.print(mainChar.getName() + " ");
+        }
+        System.out.print("chase up.\n");
     }
 }

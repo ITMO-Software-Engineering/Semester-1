@@ -158,12 +158,12 @@ public class Main {
         rabbit.coverMouth();rabbit.say(winnieThePooh, "Follow me.");
         rabbit.move(kanga);
         Move.setOff();
+        rabbit.setLocation(forest);
+        piglet.setLocation(forest);
+        tigger.setLocation(forest);
+        winnieThePooh.setLocation(forest);
 
-        Road road = new Road();
-        winnieThePooh.setLocation(road);
-        rabbit.setLocation(road);
-        piglet.setLocation(road);
-        tigger.setLocation(road);
+        Forest.Road road = forest.new Road();
 
         Move.walkSideBySide(new MainCharacter[]{winnieThePooh, rabbit, piglet});
         tigger.run("around");
@@ -172,12 +172,30 @@ public class Main {
         Move.walkOneByOne(new MainCharacter[]{winnieThePooh, rabbit, piglet});
         tigger.describeCircle();
 
-        Road.BarbedWall barbedWall = road.new BarbedWall();
+        Forest.Road.BarbedWall barbedWall = road.new BarbedWall();
         tigger.run(" far away and back");
         tigger.hit(rabbit, "sometimes");
         tigger.hit(rabbit, "sometimes not");
 
         Weather.Fog fog = weather.new Fog();
         fog.gettingThicker();
+        tigger.disappear("sometimes");
+        tigger.showUp("when you think he disappear.");
+        tigger.say("Who are you? What are you doing? Move!");
+        tigger.disappear("without answer");
+
+        rabbit.turnAroundAndPush(piglet);
+        tigger.showUp("suddenly");
+        tigger.hit(rabbit,"");
+        tigger.disappear("");
+
+        Forest.EmptyGround emptyGround = forest.new EmptyGround();
+        Move.chaseUp(new MainCharacter[]{winnieThePooh, piglet});
+
+        Forest.Jungle jungle = forest.new Jungle();
+        jungle.getCrowdIn(new MainCharacter[]{winnieThePooh, piglet});
+        jungle.listen(new MainCharacter[]{winnieThePooh, piglet});
+
+        Forest.isQuiet();
     }
 }
