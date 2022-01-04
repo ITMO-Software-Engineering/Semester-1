@@ -1,11 +1,11 @@
 package Main;//Variant: 52190
 
+import Characters.Interfaces.Move;
 import Characters.MyCharacter;
 import Characters.MainCharacters.*;
 import Characters.OtherCharacters.*;
 import Environment.*;
 import Environment.Places.*;
-import MyExeption.InPutException;
 import MyExeption.Problem;
 import Object.*;
 
@@ -42,7 +42,7 @@ public class Main {
             Thing aGoodThing = new Thing(Thing.State.GOOD);
             piglet.believe();
             piglet.doThing(aGoodThing);
-
+            aGoodThing.setName("The good thing");
 
             winnieThePooh.willTakePartIn(aGoodThing);
             rabbit.willTakePartIn(aGoodThing);
@@ -54,7 +54,7 @@ public class Main {
                     public void willTakePartIn(Thing event) {
                         event.getParticipants()[event.getNumParticipants()] = this;
                         event.increaseNumParticipants(1);
-                        System.out.println(this.getName() + " can also take part in " + event.getName() + " " + event.getState());
+                        System.out.println(this.getName() + " can also take part in " + event.getName());
                     }
 
                     public void sleep() {
@@ -109,7 +109,7 @@ public class Main {
 
         Day day = new Day(1);
         Weather weather = new Weather(Weather.Status.WARM_AND_SUNNY);
-        winnieThePooh.move(false);
+        winnieThePooh.setOff(false);
 
         day.goNextDay();
         weather.changeStatus(Weather.Status.COLD_AND_FOGGY);
@@ -144,5 +144,40 @@ public class Main {
         rabbit.say("Because " + tigger.jumpForward(weather));
         rabbit.say("As soon as he is out of sight, they will all run away and he will never see them again.");
 
+        kanga.getHouse().arriveMember(winnieThePooh);
+        kanga.getHouse().arriveMember(rabbit);
+        kanga.getHouse().arriveMember(piglet);
+
+        MainCharacter.setCloseFriend(tigger, roo);
+        roo.showFriendShip();
+        roo.waiting();
+
+        Thing theWholeThing = new Thing("The whole thing");
+        theWholeThing.getWorse();
+
+        rabbit.coverMouth();rabbit.say(winnieThePooh, "Follow me.");
+        rabbit.move(kanga);
+        Move.setOff();
+
+        Road road = new Road();
+        winnieThePooh.setLocation(road);
+        rabbit.setLocation(road);
+        piglet.setLocation(road);
+        tigger.setLocation(road);
+
+        Move.walkSideBySide(new MainCharacter[]{winnieThePooh, rabbit, piglet});
+        tigger.run("around");
+        tigger.describeCircle();
+        road.getNarrow();
+        Move.walkOneByOne(new MainCharacter[]{winnieThePooh, rabbit, piglet});
+        tigger.describeCircle();
+
+        Road.BarbedWall barbedWall = road.new BarbedWall();
+        tigger.run(" far away and back");
+        tigger.hit(rabbit, "sometimes");
+        tigger.hit(rabbit, "sometimes not");
+
+        Weather.Fog fog = weather.new Fog();
+        fog.gettingThicker();
     }
 }

@@ -14,7 +14,7 @@ public class Rabbit extends MainCharacter {
         super(name, gender);
     }
 
-    public void coverMouthWithClaw() {
-
+    public void coverMouth() {
+        System.out.print("Covering mouth with claws, ");
     }
 }

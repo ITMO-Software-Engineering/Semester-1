@@ -3,17 +3,33 @@ package Characters.MainCharacters;
 import Characters.Interfaces.Believe;
 import Characters.Interfaces.Event;
 import Characters.Interfaces.Move;
+import Characters.Interfaces.Wait;
 import Characters.MyCharacter;
 import Environment.Places.House;
 import Environment.Places.Place;
 import Object.Thing;
 
-public class MainCharacter extends MyCharacter implements Move, Believe, Event {
+public class MainCharacter extends MyCharacter implements Believe, Event, Wait {
 
     private House house;
 
     public House getHouse() {
         return this.house;
+    }
+
+    private MainCharacter closeFriend;
+
+    public static void setCloseFriend(MainCharacter mainCharacter1, MainCharacter mainCharacter2) {
+        mainCharacter1.closeFriend = mainCharacter2;
+        mainCharacter2.closeFriend = mainCharacter1;
+    }
+
+    public MainCharacter getCloseFriend() {
+        return this.closeFriend;
+    }
+
+    public void showFriendShip() {
+        System.out.println(this.getCloseFriend().getName() + " is " + this.getName() + "'s close friend.");
     }
 
     public MainCharacter() {
@@ -45,84 +61,6 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
         System.out.println(this.getName());
     }
 
-    /**
-     * Walk around
-     */
-    @Override
-    public void move() {
-        System.out.println(this.getName() + " walk around.");
-    }
-
-    /**
-     * Walk around and check if time was wasted
-     * @param isTimeWasted Judge if the time was wasted
-     */
-    @Override
-    public void move(boolean isTimeWasted) {
-        if(isTimeWasted) {
-            System.out.println(this.getName() + " walk around.");
-        }
-        else System.out.println(this.getName() + " walk around without wasting any time.");
-    }
-
-    /**
-     * Move to the destination
-     * @param destination Set the destination of this movement
-     */
-    @Override
-    public void move(Place destination) {
-        this.destination = destination;
-        System.out.println(this.getName() + " moves to " + this.destination.toString() + ".");
-    }
-
-    /**
-     * Move to the destination and check if time was wasted
-     * @param destination Set the destination of this movement
-     * @param isTimeWasted Judge if time was wasted
-     */
-    @Override
-    public void move(Place destination, boolean isTimeWasted) {
-        this.destination = destination;
-        if(isTimeWasted) {
-            System.out.println(this.getName() + " moves to " + this.destination.toString() + ".");
-        }
-        else {
-            System.out.println(this.getName() + " moves to " + this.destination.toString() + "without wasting any time.");
-        }
-    }
-
-    /**
-     * Move to the location of other myCharacter
-     * @param myCharacter Set the destination
-     */
-    @Override
-    public void move(MyCharacter myCharacter) {
-        this.destination = myCharacter.location;
-        System.out.println(this.getName() + " go to place " + myCharacter.getName() + ".");
-    }
-
-    /**
-     * Move to the location of other myCharacter and check if time was wasted
-     * @param myCharacter Set the destination
-     * @param isTimeWasted Judge if time was wasted
-     */
-    @Override
-    public void move(MyCharacter myCharacter, boolean isTimeWasted) {
-        this.destination = myCharacter.location;
-        if(isTimeWasted) {
-            System.out.println(this.getName() + " go to place " + myCharacter.getName() + ".");
-        }
-        else System.out.println(this.getName() + " go to place " + myCharacter.getName() + " without wasting any time. ");
-    }
-
-    @Override
-    public void escape(MainCharacter[] mainCharacters) {
-        for (MainCharacter mainChar: mainCharacters) {
-            System.out.print(mainChar.getName() + " ");
-        }
-        System.out.print("escape.\n");
-    }
-
     @Override
     public void believe() {
         System.out.print(this.getName() + " believes that: ");
@@ -139,7 +77,17 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
     public void willTakePartIn(Thing event) {
         event.getParticipants()[event.getNumParticipants()] = this;
         event.increaseNumParticipants(1);
-        System.out.println(this.getName() + " will take part in " + event.getName() + " " + event.getState());
+        System.out.println(this.getName() + " will take part in " + event.getName());
+    }
+
+    @Override
+    public void waiting() {
+        System.out.println(this.getName() + " is waiting them");
+    }
+
+    @Override
+    public void waiting(MainCharacter character) {
+        System.out.println(this.getName() + " is waiting " + character.getName());
     }
 
     public void setLocation(Place location) {
@@ -154,4 +102,6 @@ public class MainCharacter extends MyCharacter implements Move, Believe, Event {
     public void solveProblem() {
 
     }
+
+
 }

@@ -1,6 +1,7 @@
 package Characters;
 
 import Characters.Interfaces.*;
+import Characters.MainCharacters.MainCharacter;
 import Characters.OtherCharacters.*;
 import Environment.Places.*;
 import Environment.Weather;
@@ -8,7 +9,7 @@ import MyExeption.InPutException;
 
 import java.util.Scanner;
 
-public abstract class MyCharacter implements Talk, Think {
+public abstract class MyCharacter implements Talk, Think, Move {
 
     /**
      * All the genders of Characters
@@ -110,6 +111,43 @@ public abstract class MyCharacter implements Talk, Think {
     }
 
     /**
+     * Walk around and check if time was wasted
+     * @param isTimeWasted Judge if the time was wasted
+     */
+    @Override
+    public void setOff(boolean isTimeWasted) {
+        if(isTimeWasted) {
+            System.out.println(this.getName() + " set off.");
+        }
+        else System.out.println(this.getName() + " set off without wasting any time.");
+    }
+
+    /**
+     * Move to the destination
+     * @param destination Set the destination of this movement
+     */
+    @Override
+    public void move(Place destination) {
+        this.destination = destination;
+        System.out.println(this.getName() + " moves to " + this.destination.toString() + ".");
+    }
+
+    /**
+     * Move to the location of other myCharacter
+     * @param myCharacter Set the destination
+     */
+    @Override
+    public void move(MyCharacter myCharacter) {
+        this.destination = myCharacter.location;
+        System.out.println(this.getName() + " go to place " + myCharacter.getName() + ".");
+    }
+
+    @Override
+    public void run(String how) {
+        System.out.println(this.getName() + " runs " + how);
+    }
+
+    /**
      * Say something
      * @param words The words which was said
      */
@@ -125,7 +163,7 @@ public abstract class MyCharacter implements Talk, Think {
      */
     @Override
     public void say(MyCharacter myCharacter, String words) {
-        System.out.println(this.name + " tells " + myCharacter.name + ':' + '"' + words + '"');
+        System.out.println(this.name + " says to " + myCharacter.name + ':' + '"' + words + '"');
     }
 
     @Override

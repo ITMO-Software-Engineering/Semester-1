@@ -1,6 +1,8 @@
 package Characters.Interfaces;
 
+import Characters.MainCharacters.MainCharacter;
+
 public interface Wait {
     void waiting();
-    void waiting(Character character);
+    void waiting(MainCharacter character);
 }
