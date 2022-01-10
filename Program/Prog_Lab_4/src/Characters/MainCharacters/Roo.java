@@ -1,6 +1,9 @@
 package Characters.MainCharacters;
 
+import Main.Main;
+
 public class Roo extends MainCharacter {
+
     public Roo() {
         super("Roo");
     }
@@ -13,4 +16,5 @@ public class Roo extends MainCharacter {
     public Roo(String name, Gender gender) {
         super(name, gender);
     }
+
 }

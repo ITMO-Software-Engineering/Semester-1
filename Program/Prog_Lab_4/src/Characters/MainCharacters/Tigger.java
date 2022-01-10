@@ -4,11 +4,13 @@ import Characters.MyCharacter;
 import Environment.Weather;
 import MyExeption.InPutException;
 import MyExeption.Problem;
-import Main.Main;
 
 import java.util.Scanner;
 
 public class Tigger extends MainCharacter {
+
+    private MainCharacter closeFriend;
+
     public Tigger() {
         super("Tigger");
     }
@@ -35,12 +37,12 @@ public class Tigger extends MainCharacter {
         }
     }
 
-    public void showUp() {
-        System.out.println(this.getName() + " shows up.");
+    public void showUp(String description) {
+        System.out.println(this.getName() + " shows up " + description);
     }
 
-    public void disappear() {
-        System.out.println(this.getName() + " disappeared.");
+    public void disappear(String description) {
+        System.out.println(this.getName() + " disappeared " + description);
     }
 
     @Override
@@ -68,8 +70,12 @@ public class Tigger extends MainCharacter {
         }
     }
 
-    public void hit(MyCharacter character) {
-        System.out.println(this.getName() + " hits " + character.getName() + '.');
+    public void describeCircle() {
+        System.out.println(this.getName() + " describes a circle");
+    }
+
+    public void hit(MyCharacter character, String how) {
+        System.out.println(this.getName() + " " + how + " hits " + character.getName() + '.');
     }
 
     public String jumpForward(Weather weather) {
