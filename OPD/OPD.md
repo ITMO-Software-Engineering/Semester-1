@@ -169,3 +169,44 @@
     - Z - 0符号位
     - V - 溢出位
     - C - 最高进位借位
+- 指令
+  - 寻址指令
+    指令码 | 助记符 | 作用
+    ------|--------|----
+    2XXX | AND M | M&AC->AC
+    3XXX | OR M | \^(\^M&\^AC)->AC
+    4XXX | ADD M | M+AC->AC
+    5XXX | ADC M | M+AC+C->AC
+    6XXX | SUB M | AC-M->AC
+    7XXX | CMP M | 同 SUB M 只是计算结果不存进 AC 只改变标识符
+    8XXX | LOOP M | M-1->M IF M<=0 IP+1->IP
+    9XXX |       | 
+    AXXX | LD M | M->AC
+    BXXX | SWAM M | M<->AC
+    CXXX | JUMP M | M->IP
+    DXXX | CALL M | SP-1->SP IP->SP M->IP
+    EXXX | ST M | AC->M
+  - 非寻址指令
+    指令码 | 助记符 | 作用
+    ------|--------|----
+    0000 | NOP | 
+    0100 | HLT | 终止
+    0200 | CLA | 0->AC
+    0280 | NOT | \^AC->AC
+    0300 | CLC | 0->C
+    0380 | CMC | \^C->C
+    0400 | ROL | 循环左移
+    0480 | ROR | 循环右移
+    0500 | ASL | 算数左移
+    0580 | ASR | 算数右移
+    0600 | SXTB | 延长符号位
+    0680 | SWAB | 交换高低字节
+    0700 | INC | AC+1->AC
+    0780 | DEC | AC-1->AC
+    0800 | NEG | \^AC+1->AC
+    0900 | 
+    0A00 | 
+    0B00 | 
+    0C00 | 
+    0D00 | 
+    0E00 | 
