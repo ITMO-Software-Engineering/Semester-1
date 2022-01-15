@@ -18,6 +18,7 @@ public class NorthPole extends Place{
 
         public void viewInscription(MyCharacter myCharacter) {
             System.out.println(myCharacter.getName() + " saw an inscription: " + getInscription());
+
         }
     }
 }

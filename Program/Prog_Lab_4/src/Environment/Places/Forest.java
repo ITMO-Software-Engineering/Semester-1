@@ -25,13 +25,13 @@ public class Forest extends Place {
         }
     }
 
-    public class EmptyGround {
+    public static class EmptyGround {
         public EmptyGround() {
             System.out.println("There's an empty ground on the road.");
         }
     }
 
-    public class Jungle {
+    public static class Jungle {
         String name;
 
         public Jungle() {
