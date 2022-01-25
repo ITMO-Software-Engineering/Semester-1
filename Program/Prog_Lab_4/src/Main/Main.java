@@ -187,13 +187,14 @@ public class Main {
         tigger.hit(rabbit,"");
         tigger.disappear("");
 
-        Forest.EmptyGround emptyGround = forest.new EmptyGround();
+        Forest.EmptyGround emptyGround = new Forest.EmptyGround();
         Move.chaseUp(new MainCharacter[]{winnieThePooh, piglet});
 
-        Forest.Jungle jungle = forest.new Jungle();
+        Forest.Jungle jungle = new Forest.Jungle();
         jungle.getCrowdIn(new MainCharacter[]{winnieThePooh, piglet});
         jungle.listen(new MainCharacter[]{winnieThePooh, piglet});
 
         Forest.isQuiet();
+
     }
 }
